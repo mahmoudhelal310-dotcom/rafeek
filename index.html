@@ -141,12 +141,12 @@
     .modal-header { padding: 12px 18px; background: var(--primary); color: #fff; display: flex; justify-content: space-between; align-items: center; }
     .modal-actions { display: flex; align-items: center; gap: 8px; }
     .font-ctrl-btn { background: rgba(255,255,255,0.18); border: 1px solid rgba(255,255,255,0.3); color: #fff; border-radius: 6px; padding: 4px 10px; cursor: pointer; font-weight: 700; }
-    .modal-body { padding: 22px; overflow-y: auto; line-height: 2.3; font-size: 1.4rem; font-family: 'Amiri', serif; text-align: justify; flex-grow: 1; color: var(--text); }
+    .modal-body { padding: 22px; overflow-y: auto; line-height: 2.3; font-size: 1.4rem; font-family: 'Amiri', serif; text-align: justify; color: var(--text); max-height: 50vh; }
     .bismillah { text-align: center; font-weight: 700; font-size: 1.6rem; margin-bottom: 20px; color: var(--accent); }
     .ayah-text { cursor: pointer; padding: 2px 4px; border-radius: 4px; color: var(--text); }
     .ayah-badge { display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; border: 1.5px solid var(--accent); border-radius: 50%; font-size: 0.85rem; margin: 0 6px; color: var(--primary); font-weight: 700; background: rgba(212, 175, 55, 0.08); cursor: pointer; }
 
-    .tafsir-box { border-top: 3px solid var(--accent); background: var(--modal-bg); padding: 16px 20px; font-family: 'Cairo', sans-serif; font-size: 1rem; line-height: 1.8; max-height: 38vh; overflow-y: auto; display: none; color: var(--text); }
+    .tafsir-box { border-top: 3px solid var(--accent); background: var(--modal-bg); padding: 16px 20px; font-family: 'Cairo', sans-serif; font-size: 1rem; line-height: 1.8; max-height: 35vh; overflow-y: auto; display: block; color: var(--text); flex-shrink: 0; }
     .tafsir-title { font-weight: 700; color: var(--primary); margin-bottom: 6px; display: flex; justify-content: space-between; align-items: center; }
     .tafsir-tool-btn { background: var(--accent-soft); border: 1px solid var(--accent); color: var(--primary); padding: 4px 10px; border-radius: 6px; cursor: pointer; font-size: 0.8rem; font-weight: bold; }
     .ayah-audio-btn { display: inline-flex; align-items: center; justify-content: center; width: 26px; height: 26px; border-radius: 50%; background: var(--accent-soft); color: var(--primary); cursor: pointer; font-size: 0.75rem; margin: 0 4px; vertical-align: middle; }
@@ -606,7 +606,11 @@
       currentShareAyahNum = ayahNum;
       tafsirAyahHeader.innerText = `تفسير الآية (${ayahNum}) من ${currentShareSurahName}`;
       tafsirContent.innerHTML = '<div style="color:var(--text-muted);">جاري جلب التفسير...</div>';
+      
+      // التمرير التلقائي الفوري لضمان ظهور التفسير بوضوح
       tafsirBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      modalSurahBody.scrollTo({ top: modalSurahBody.scrollHeight, behavior: 'smooth' });
+
       currentAyahTextForShare = currentSurahAyahsMap[ayahNum] || '';
       try {
         const res = await fetch(`https://api.alquran.cloud/v1/ayah/${surahId}:${ayahNum}/ar.muyassar`);
@@ -839,8 +843,7 @@
       ],
       sleep: [
         { text: "بِاسْمِكَ رَبِّي وَضَعْتُ جَنْبِي، وَبِكَ أَرْفَعُهُ، إِنْ أَمْسَكْتَ نَفْسِي فَارْحَمْهَا.", target: 1 },
-        { text: "اللَّهُمَّ قِنِي عَذَابَكَ يَوْمَ تَبْعَثُ عِبَادَكَ (ثلاث مرات).", target: 3 },
-        { text: "يجمع كفيه ثم ينفث فيهما فيقرأ: قل هو الله أحد، وقل أعوذ برق الفلق، وقل أعوذ برب الناس، ويقسح بهما ما استطاع من جسده.", target: 1 }
+        { text: "اللَّهُمَّ قِنِي عَذَابَكَ يَوْمَ تَبْعَثُ عِبَادَكَ (ثلاث مرات).", target: 3 }
       ],
       after_prayer: [
         { text: "أَسْتَغْفِرُ اللَّهَ (ثَلاَثاً)، اللَّهُمَّ أَنْتَ السَّلاَمُ وَمِنْكَ السَّلاَمُ، تَبَارَكْتَ يَا ذَا الجَلَالِ وَالإِكْرَامِ.", target: 1 },
@@ -848,10 +851,10 @@
         { text: "سُبْحَانَ اللَّهِ (33)، وَالحَمْدُ لِلَّهِ (33)، وَاللَّهُ أَكْبَرُ (33)، وَتمام المائة: لا إله إلا الله وحده لا شريك له.", target: 1 }
       ],
       audio_duas: [
-        { title: "🎵 لبيك اللهم لبيك (تلبية الحج والعمرة)", audio: "https://server11.mp3quran.net/hajj/001.mp3" },
-        { title: "🎵 تكبيرات العيد الكبرى", audio: "https://server11.mp3quran.net/hajj/002.mp3" },
-        { title: "🎵 دعاء ختم القرآن الكريم (الشيخ ماهر المعيقلي)", audio: "https://server12.mp3quran.net/maher/khatm.mp3" },
-        { title: "🎵 أدعية منوعة بصوت الشيخ مشاري العفاسي", audio: "https://server8.mp3quran.net/afs/duaa.mp3" }
+        { title: "🎵 لبيك اللهم لبيك (تلبية الحج)", audio: "https://archive.org/download/LabbaikAllahummaLabbaik_201605/Labbaik.mp3" },
+        { title: "🎵 تكبيرات العيد الحرم المكي", audio: "https://archive.org/download/TakbeeratAlEid_2016/Takbeerat.mp3" },
+        { title: "🎵 دعاء خاشع بصوت الشيخ ماهر المعيقلي", audio: "https://server12.mp3quran.net/maher/001.mp3" },
+        { title: "🎵 رقية شرعية صوتية", audio: "https://server11.mp3quran.net/s_gmd/Rqia.mp3" }
       ]
     };
 
@@ -904,11 +907,10 @@
         audioDuasPlayer.pause(); btn.innerText = "▶️ استماع"; return;
       }
       audioDuasPlayer.src = url;
-      audioDuasPlayer.play().then(() => { btn.innerText = "⏸️ إيقاف"; }).catch(() => alert("تعذر التشغيل أو الرابط غير متوفر مؤقتاً"));
+      audioDuasPlayer.play().then(() => { btn.innerText = "⏸️ إيقاف"; }).catch(() => alert("تعذر تشغيل الملف الصوتي حالياً"));
       audioDuasPlayer.onended = () => { btn.innerText = "▶️ استماع"; };
     }
 
-    // جميع محافظات مصر والدول العربية
     const locations = [
       { country: "مصر", enCountry: "Egypt", method: 5, cities: [
           { ar: "القاهرة", en: "Cairo" }, { ar: "الإسكندرية", en: "Alexandria" }, { ar: "الجيزة", en: "Giza" },
