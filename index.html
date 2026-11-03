@@ -137,7 +137,6 @@
     .p-btn { background: none; border: none; font-size: 1.2rem; cursor: pointer; color: var(--text); }
     audio { flex: 1; height: 36px; }
 
-    /* جعل نافذة القراءة بملء الشاشة بالكامل بدون أي فراغ سفلي */
     .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.85); display: none; flex-direction: column; z-index: 2000; }
     .modal-content { background: var(--modal-bg); width: 100vw; height: 100vh; display: flex; flex-direction: column; overflow: hidden; }
     .modal-header { padding: 14px 20px; background: var(--primary); color: #fff; display: flex; justify-content: space-between; align-items: center; flex-shrink: 0; }
@@ -752,7 +751,7 @@
 
     function resumeBookmark() {
       const saved = localStorage.getItem("quran_bookmark");
-      if (saved) { readSurah(JSON.parse(saved).id, data.name); }
+      if (saved) { readSurah(JSON.parse(saved).id, JSON.parse(saved).name); }
     }
 
     async function searchAyat() {
