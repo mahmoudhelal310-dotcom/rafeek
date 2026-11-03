@@ -63,215 +63,74 @@
       border-bottom-right-radius: 24px;
     }
 
-    .app-title {
-      font-size: 1.4rem;
-      font-weight: 800;
-      color: var(--accent);
-      margin-bottom: 2px;
-    }
-
-    .app-subtitle {
-      font-size: 0.78rem;
-      color: #e5e7eb;
-      margin-bottom: 8px;
-    }
+    .app-title { font-size: 1.4rem; font-weight: 800; color: var(--accent); margin-bottom: 2px; }
+    .app-subtitle { font-size: 0.78rem; color: #e5e7eb; margin-bottom: 8px; }
 
     .top-bar-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      max-width: 500px;
-      margin: 0 auto 8px;
-      padding: 0 6px;
+      display: flex; justify-content: space-between; align-items: center; max-width: 500px; margin: 0 auto 8px; padding: 0 6px;
     }
 
     .icon-btn {
-      background: rgba(255,255,255,0.2);
-      border: 1px solid rgba(255,255,255,0.4);
-      color: #fff;
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1rem;
-      outline: none;
+      background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.4); color: #fff; width: 36px; height: 36px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 1rem; outline: none; z-index: 10;
     }
-
     .icon-btn:hover { background: rgba(255,255,255,0.35); }
 
     .location-selector-box {
-      max-width: 500px;
-      margin: 0 auto 8px;
-      display: flex;
-      justify-content: center;
-      gap: 6px;
+      max-width: 500px; margin: 0 auto 8px; display: flex; justify-content: center; gap: 6px; position: relative; z-index: 50;
     }
 
     .location-selector-box select {
-      background: rgba(255,255,255,0.25);
-      color: #fff;
-      border: 1px solid rgba(255,255,255,0.5);
-      padding: 6px 12px;
-      border-radius: 8px;
-      font-size: 0.85rem;
-      font-weight: 600;
-      outline: none;
-      cursor: pointer;
-      pointer-events: auto;
+      background: rgba(255,255,255,0.25); color: #fff; border: 1px solid rgba(255,255,255,0.5); padding: 6px 12px; border-radius: 8px; font-size: 0.85rem; font-weight: 600; outline: none; cursor: pointer; pointer-events: auto; z-index: 60;
     }
-    .location-selector-box select option {
-      background: #1f2937;
-      color: #fff;
-    }
+    .location-selector-box select option { background: #1f2937; color: #fff; }
 
     .prayers-mini-bar {
-      max-width: 500px;
-      margin: 0 auto;
-      background: rgba(0,0,0,0.25);
-      border-radius: 12px;
-      padding: 8px 10px;
-      display: flex;
-      justify-content: space-around;
-      font-size: 0.78rem;
+      max-width: 500px; margin: 0 auto; background: rgba(0,0,0,0.25); border-radius: 12px; padding: 8px 10px; display: flex; justify-content: space-around; font-size: 0.78rem;
     }
-
-    .prayer-box {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
+    .prayer-box { display: flex; flex-direction: column; align-items: center; }
     .prayer-box span:first-child { color: #d1d5db; font-size: 0.7rem; }
     .prayer-box span:last-child { font-weight: 700; color: var(--accent); }
 
-    .dashboard-container {
-      max-width: 500px;
-      margin: 20px auto;
-      padding: 0 12px;
-    }
-
-    .dashboard-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
-    }
+    .dashboard-container { max-width: 500px; margin: 20px auto; padding: 0 12px; }
+    .dashboard-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
 
     .dashboard-card {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 18px 10px;
-      text-align: center;
-      cursor: pointer;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.06);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 8px;
+      background: var(--card-bg); border: 1px solid var(--border); border-radius: 16px; padding: 18px 10px; text-align: center; cursor: pointer; box-shadow: 0 4px 12px rgba(0,0,0,0.06); display: flex; flex-direction: column; align-items: center; gap: 8px;
     }
-
-    .dashboard-card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 6px 16px rgba(212, 175, 55, 0.2);
-      border-color: var(--accent);
-    }
-
+    .dashboard-card:hover { transform: translateY(-3px); box-shadow: 0 6px 16px rgba(212, 175, 55, 0.2); border-color: var(--accent); }
     .card-icon { font-size: 32px; }
     .card-title { font-size: 0.85rem; font-weight: 700; color: var(--text); }
 
-    .section-view {
-      display: none;
-      max-width: 650px;
-      margin: 15px auto;
-      padding: 0 12px;
-    }
+    .section-view { display: none; max-width: 650px; margin: 15px auto; padding: 0 12px; }
 
     .back-home-btn {
-      background: var(--primary);
-      color: #fff;
-      border: none;
-      padding: 8px 16px;
-      border-radius: 10px;
-      font-weight: 700;
-      cursor: pointer;
-      margin-bottom: 14px;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 0.85rem;
+      background: var(--primary); color: #fff; border: none; padding: 8px 16px; border-radius: 10px; font-weight: 700; cursor: pointer; margin-bottom: 14px; display: inline-flex; align-items: center; gap: 6px; font-size: 0.85rem;
     }
 
     .bookmark-bar {
-      display: none;
-      background: var(--accent-soft);
-      border: 1px dashed var(--accent);
-      border-radius: 12px;
-      padding: 10px 16px;
-      margin-bottom: 14px;
-      align-items: center;
-      justify-content: space-between;
-      font-size: 0.9rem;
-      font-weight: 600;
+      display: none; background: var(--accent-soft); border: 1px dashed var(--accent); border-radius: 12px; padding: 10px 16px; margin-bottom: 14px; align-items: center; justify-content: space-between; font-size: 0.9rem; font-weight: 600;
     }
 
-    .surah-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 10px;
-    }
-
-    .surah-card {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 10px 14px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
+    .surah-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 10px; }
+    .surah-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; padding: 10px 14px; display: flex; align-items: center; justify-content: space-between; }
     .surah-info { display: flex; align-items: center; gap: 10px; }
-    .surah-num {
-      width: 34px; height: 34px; background: var(--accent-soft); color: var(--primary);
-      border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.82rem;
-    }
+    .surah-num { width: 34px; height: 34px; background: var(--accent-soft); color: var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.82rem; }
     .surah-name { font-weight: 700; font-size: 0.98rem; color: var(--text); }
     .surah-actions { display: flex; gap: 5px; }
 
-    .btn {
-      border: none; background: none; cursor: pointer; padding: 6px 10px; border-radius: 8px; font-size: 0.8rem; font-weight: 700; display: inline-flex; align-items: center; justify-content: center; text-decoration: none;
-    }
+    .btn { border: none; background: none; cursor: pointer; padding: 6px 10px; border-radius: 8px; font-size: 0.8rem; font-weight: 700; display: inline-flex; align-items: center; justify-content: center; text-decoration: none; }
     .btn-play { background: var(--primary); color: white; }
     .btn-read { background: var(--accent-soft); color: var(--text); }
     .btn-download { background: rgba(120, 140, 160, 0.12); color: var(--text-muted); }
 
-    .search-result-item {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 16px;
-      margin-bottom: 12px;
-      line-height: 2.2;
-      font-family: 'Amiri', serif;
-      font-size: 1.2rem;
-      color: var(--text);
-      box-shadow: 0 2px 6px rgba(0,0,0,0.03);
-    }
-    .search-result-header {
-      font-family: 'Cairo', sans-serif;
-      font-size: 0.88rem;
-      color: var(--primary);
-      font-weight: bold;
-      margin-bottom: 6px;
-      display: flex;
-      justify-content: space-between;
-    }
+    .search-result-item { background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; padding: 16px; margin-bottom: 12px; line-height: 2.2; font-family: 'Amiri', serif; font-size: 1.2rem; color: var(--text); box-shadow: 0 2px 6px rgba(0,0,0,0.03); }
+    .search-result-header { font-family: 'Cairo', sans-serif; font-size: 0.88rem; color: var(--primary); font-weight: bold; margin-bottom: 6px; display: flex; justify-content: space-between; }
 
-    .player-bar {
-      position: fixed; bottom: 0; left: 0; right: 0; background: var(--card-bg); border-top: 1px solid var(--border); box-shadow: 0 -4px 18px rgba(0,0,0,0.12); padding: 10px 16px; display: flex; flex-direction: column; align-items: center; gap: 6px; z-index: 1000;
-    }
+    .zikr-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 12px; padding: 14px 16px; display: flex; flex-direction: column; gap: 10px; font-family: 'Amiri', serif; font-size: 1.05rem; color: var(--text); margin-bottom: 10px; }
+    .zikr-footer { display: flex; justify-content: space-between; align-items: center; font-family: 'Cairo', sans-serif; border-top: 1px solid var(--border); padding-top: 8px; }
+    .zikr-count-btn { background: var(--primary); color: #fff; padding: 5px 14px; border-radius: 16px; border: none; font-weight: 700; cursor: pointer; font-size: 0.85rem; }
+
+    .player-bar { position: fixed; bottom: 0; left: 0; right: 0; background: var(--card-bg); border-top: 1px solid var(--border); box-shadow: 0 -4px 18px rgba(0,0,0,0.12); padding: 10px 16px; display: flex; flex-direction: column; align-items: center; gap: 6px; z-index: 1000; }
     .player-details { display: flex; align-items: center; gap: 8px; font-weight: 700; color: var(--primary); font-size: 0.9rem; }
     .player-controls-row { display: flex; align-items: center; gap: 12px; width: 100%; max-width: 600px; }
     .p-btn { background: none; border: none; font-size: 1.2rem; cursor: pointer; color: var(--text); }
@@ -285,7 +144,6 @@
     .modal-body { padding: 22px; overflow-y: auto; line-height: 2.3; font-size: 1.4rem; font-family: 'Amiri', serif; text-align: justify; flex-grow: 1; color: var(--text); }
     .bismillah { text-align: center; font-weight: 700; font-size: 1.6rem; margin-bottom: 20px; color: var(--accent); }
     .ayah-text { cursor: pointer; padding: 2px 4px; border-radius: 4px; color: var(--text); }
-    .ayah-text:hover { background: var(--accent-soft); }
     .ayah-badge { display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; border: 1.5px solid var(--accent); border-radius: 50%; font-size: 0.85rem; margin: 0 6px; color: var(--primary); font-weight: 700; background: rgba(212, 175, 55, 0.08); cursor: pointer; }
 
     .tafsir-box { border-top: 3px solid var(--accent); background: var(--modal-bg); padding: 16px 20px; font-family: 'Cairo', sans-serif; font-size: 1rem; line-height: 1.8; max-height: 38vh; overflow-y: auto; display: none; color: var(--text); }
@@ -297,9 +155,7 @@
     .tasbeeh-ring { width: 160px; height: 160px; border-radius: 50%; border: 8px solid var(--accent); margin: 20px auto; display: flex; flex-direction: column; align-items: center; justify-content: center; cursor: pointer; user-select: none; background: radial-gradient(circle, var(--card-bg), var(--accent-soft)); }
     .tasbeeh-counter-num { font-size: 3rem; font-weight: 800; color: var(--primary); line-height: 1; }
 
-    footer {
-      text-align: center; margin: 40px auto 20px; padding: 24px 15px; max-width: 900px; background: var(--card-bg); border: 1px solid var(--border); border-radius: 16px; box-shadow: 0 4px 14px rgba(0,0,0,0.03); color: var(--text);
-    }
+    footer { text-align: center; margin: 40px auto 20px; padding: 24px 15px; max-width: 900px; background: var(--card-bg); border: 1px solid var(--border); border-radius: 16px; box-shadow: 0 4px 14px rgba(0,0,0,0.03); color: var(--text); }
   </style>
 </head>
 <body>
@@ -327,7 +183,6 @@
     </div>
   </header>
 
-  <!-- الشاشة الرئيسية (شكل الأيقونات الشبكية) -->
   <div class="dashboard-container" id="homeDashboard">
     <div class="dashboard-grid">
       <div class="dashboard-card" onclick="openSection('quranSection')">
@@ -357,7 +212,6 @@
     </div>
   </div>
 
-  <!-- الأقسام الداخلية -->
   <div class="section-view" id="quranSection">
     <button class="back-home-btn" onclick="goHome()">⬅ العودة للرئيسية</button>
     <div class="bookmark-bar" id="bookmarkBar">
@@ -368,14 +222,14 @@
       <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:12px;">
         <div>
           <label style="font-size:0.8rem; font-weight:750; display:block; margin-bottom:4px; color:var(--text);">🎙️ القارئ:</label>
-          <select id="reciterSelect" style="width:100%; padding:10px; border-radius:8px; border:1px solid var(--border); background:var(--bg); color:var(--text);"></select>
+          <select id="reciterSelect" onchange="onReciterChange()" style="width:100%; padding:10px; border-radius:8px; border:1px solid var(--border); background:var(--bg); color:var(--text);"></select>
         </div>
         <div>
           <label style="font-size:0.8rem; font-weight:750; display:block; margin-bottom:4px; color:var(--text);">🔍 بحث السورة:</label>
-          <input type="text" id="searchInput" placeholder="ابحث باسم السورة..." style="width:100%; padding:10px; border-radius:8px; border:1px solid var(--border); background:var(--bg); color:var(--text);">
+          <input type="text" id="searchInput" oninput="renderSurahs()" placeholder="ابحث باسم السورة..." style="width:100%; padding:10px; border-radius:8px; border:1px solid var(--border); background:var(--bg); color:var(--text);">
         </div>
       </div>
-      <div style="margin-bottom:12px; padding:8px 12px; background:var(--bg); border-radius:8px; font-size:0.85rem; color:var(--text);">
+      <div style="margin-bottom:12px; padding:8px 12px; background:var(--bg); border-radius:8px; font-size:0.88rem; color:var(--text); font-weight:700;">
         <span id="reciterNameTag">تلاوة بصوت: الشيخ خالد القحطاني</span>
       </div>
       <div class="surah-grid" id="surahContainer"></div>
@@ -391,7 +245,6 @@
       <p style="font-size:0.9rem; color:var(--text-muted); margin-bottom:14px;">بث مباشر لتلاوات عطرة 24 ساعة</p>
       <select id="radioStationSelect" onchange="changeRadioStation()" style="width:100%; padding:11px; border-radius:10px; border:1px solid var(--border); background:var(--bg); color:var(--text); margin-bottom:14px; outline:none; cursor:pointer;">
         <option value="cairo" selected>📻 إذاعة القرآن الكريم من القاهرة</option>
-        <option value="makkah">🕋 إذاعة القرآن الكريم من مكة المكرمة</option>
         <option value="tarateel">🎙️ تلاوات خاشعة منوعة</option>
         <option value="roqiah">🛡️ إذاعة الرقية الشرعية</option>
       </select>
@@ -409,7 +262,7 @@
         <button class="btn btn-read" onclick="loadAzkarCategory('evening')">أذكار المساء</button>
         <button class="btn btn-read" onclick="loadAzkarCategory('sleep')">أذكار النوم</button>
         <button class="btn btn-read" onclick="loadAzkarCategory('after_prayer')">بعد الصلاة</button>
-        <button class="btn btn-read" onclick="loadAzkarCategory('audio_duas')">🎵 أدعية صوتية وتكبيرات</button>
+        <button class="btn btn-read" onclick="loadAzkarCategory('audio_duas')">🎵 أدعية وتكبيرات ولبيك</button>
       </div>
       <div id="azkarList"></div>
     </div>
@@ -418,17 +271,29 @@
   <div class="section-view" id="tasbeehSection">
     <button class="back-home-btn" onclick="goHome()">⬅ العودة للرئيسية</button>
     <div class="tasbeeh-box" style="display:block; margin:0 auto;">
-      <h3>📿 السبحة الإلكترونية الحرة</h3>
+      <h3>📿 السبحة الإلكترونية الشاملة</h3>
+      <div style="margin: 12px 0;">
+        <label style="font-size: 0.85rem; font-weight: bold; display: block; margin-bottom: 6px;">اختر التسبيح:</label>
+        <select id="tasbeehPhraseSelect" style="width: 100%; padding: 8px; border-radius: 8px; border: 1px solid var(--border); background: var(--bg); color: var(--text); font-size: 0.9rem; font-weight: bold;">
+          <option value="سبحان الله">سبحان الله</option>
+          <option value="الحمد لله">الحمد لله</option>
+          <option value="لا إله إلا الله">لا إله إلا الله</option>
+          <option value="الله أكبر">الله أكبر</option>
+          <option value="استغفر الله">استغفر الله</option>
+          <option value="لاحول ولاقوة إلا بالله">لاحول ولاقوة إلا بالله</option>
+          <option value="سبحان الله وبحمده سبحان الله العظيم">سبحان الله وبحمده سبحان الله العظيم</option>
+        </select>
+      </div>
       <div class="tasbeeh-ring" onclick="incrementTasbeeh()">
         <span class="tasbeeh-counter-num" id="tasbeehCount">0</span>
-        <span style="font-size:0.75rem; color:var(--text-muted); margin-top:4px;">اضغط للتسبيح</span>
+        <span style="font-size:0.75rem; color:var(--text-muted); margin-top:4px;" id="currentPhraseDisplay">سبحان الله</span>
       </div>
       <div style="display:flex; justify-content:space-around; align-items:center; margin-top:14px; font-size:0.88rem; font-weight:700; color:var(--text);">
         <span>الدورات: <b id="tasbeehLaps" style="color:var(--primary);">0</b></span>
         <span>الإجمالي: <b id="tasbeehTotal" style="color:var(--accent);">0</b></span>
       </div>
       <div style="margin-top:16px;">
-        <button class="btn btn-read" style="padding:8px 18px;" onclick="resetTasbeeh()">🔄 إعادة ضبط</button>
+        <button class="btn btn-read" style="padding:8px 18px;" onclick="resetTasbeeh()">🔄 إعادة ضبط العداد</button>
       </div>
     </div>
   </div>
@@ -610,9 +475,10 @@
       reciterSelect.appendChild(option);
     });
 
-    function updateReciterToolbar() {
+    function onReciterChange() {
       const reciter = reciters[reciterSelect.value];
       reciterNameTag.innerText = `تلاوة بصوت: ${reciter.name}`;
+      renderSurahs();
     }
 
     function renderSurahs() {
@@ -641,7 +507,7 @@
         `;
         container.appendChild(card);
       });
-      updateReciterToolbar();
+      reciterNameTag.innerText = `تلاوة بصوت: ${currentReciter.name}`;
     }
 
     function playSurahByIndex(index) {
@@ -754,7 +620,7 @@
     }
 
     function copyAyahWithTafsir() {
-      const fullText = `﴿ ${currentAyahTextForShare} ﴾\n\nالتفسير الميسر:\n${currentTafsirTextForShare}\n\n— من بوابة القرآن الكريم`;
+      const fullText = `﴿ ${currentAyahTextForShare} ﴾\n\nالتفسير الميسر:\n${currentTafsirTextForShare}\n\n— من رفيق المسلم`;
       if (navigator.clipboard && window.isSecureContext) {
         navigator.clipboard.writeText(fullText).then(() => alert("✅ تم النسخ!"));
       } else {
@@ -826,7 +692,7 @@
       drawJustifiedWrappedText(ctx, currentTafsirTextForShare, 540, 850, 820, 48);
 
       ctx.fillStyle = '#80ed99'; ctx.font = 'bold 30px Cairo, sans-serif'; ctx.fillText('🌿 صدقة جارية — لا تنسونا من صالح دعائكم', 540, 1660);
-      ctx.fillStyle = '#d4af37'; ctx.font = 'bold 32px Cairo, sans-serif'; ctx.fillText('بوابة القرآن الكريم الشاملة', 540, 1730);
+      ctx.fillStyle = '#d4af37'; ctx.font = 'bold 32px Cairo, sans-serif'; ctx.fillText('رفيق المسلم', 540, 1730);
       ctx.fillStyle = '#ffffff'; ctx.font = 'bold 36px Cairo, sans-serif'; ctx.fillText('by Mahmoud Helal', 540, 1785);
 
       return new Promise(resolve => canvas.toBlob(blob => resolve(blob), 'image/png'));
@@ -893,7 +759,6 @@
 
     const radioStationsMap = {
       cairo: ["https://stream.radiojar.com/8s5u5tpdtwzuv", "https://n03.radiojar.com/8s5u5tpdtwzuv"],
-      makkah: ["https://stream.zeno.fm/f3wvbbqmdg8uv", "https://server02.quran.com.sa/"],
       tarateel: ["https://backup.qurango.net/radio/tarateel"],
       roqiah: ["https://backup.qurango.net/radio/roqiah"]
     };
@@ -943,7 +808,6 @@
         currentAyahIndex = (currentAyahIndex + 1) % ayat.length;
       }, 1000);
     }, 9000);
-    ayahBanner.innerHTML = "📖 " + ayat[0]; ayahBanner.style.opacity = 1;
 
     function openSection(sectionId) {
       document.getElementById("homeDashboard").style.display = "none";
@@ -959,17 +823,10 @@
     }
 
     const azkarData = {
-      prophetic_duas: [
-        { text: "اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنَ الْهَمِّ وَالْحَزَنِ، وَأَعُوذُ بِكَ مِنَ الْعَجْزِ وَالْكَسَلِ.", target: 1 },
-        { text: "يَا حَيُّ يَا قَيُّومُ، بِرَحْمَتِكَ أَسْتَغِيثُ، أَصْلِحْ لِي شَأْني كُلَّهُ.", target: 1 }
-      ],
-      duas: [
-        { text: "رَبَّنَا آتِنَا فِي الدُّنْيَا حَسَنَةً وَفِي الْآخِرَةِ حَسَنَةً وَقِنَا عَذَابَ النَّارِ.", target: 1 },
-        { text: "رَبَّنَا لَا تُزِغْ قُلُوبَنَا بَعْدَ إِذْ هَدَيْتَنَا وَهَبْ لَنَا مِنْ لَدُنْكَ رَحْمَةً.", target: 1 }
-      ],
       morning: [
         { text: "أَصْبَحْنَا وَأَصْبَحَ المُلْكُ لِلَّهِ، وَالحَمْدُ لِلَّهِ لاَ إِلَهَ إِلاَّ اللَّهُ وَحْدَهُ لاَ شَرِيكَ لَهُ.", target: 1 },
-        { text: "اللَّهُمَّ أَنْتَ رَبِّي لاَ إِلَهَ إِلاَّ أَنْتَ، خَلَقْتَنِي وَأَنَا عَبْدُكَ.", target: 1 }
+        { text: "اللَّهُمَّ أَنْتَ رَبِّي لاَ إِلَهَ إِلاَّ أَنْتَ، خَلَقْتَنِي وَأَنَا عَبْدُكَ.", target: 1 },
+        { text: "رَضِيتُ بِاللَّهِ رَبّاً، وَبِالإِسْلَامِ دِيناً، وَبِمُحَمَّدٍ ﷺ نَبِيّاً.", target: 3 }
       ],
       evening: [
         { text: "أَمْسَيْنَا وَأَمْسَى المُلْكُ لِلَّهِ، وَالحَمْدُ لِلَّهِ لاَ إِلَهَ إِلاَّ اللَّهُ.", target: 1 },
@@ -988,6 +845,11 @@
     };
 
     let tasbeehCount = 0, tasbeehLaps = parseInt(localStorage.getItem("tasbeeh_laps") || "0"), tasbeehTotal = parseInt(localStorage.getItem("tasbeeh_total") || "0");
+    
+    document.getElementById("tasbeehPhraseSelect").addEventListener("change", function() {
+      document.getElementById("currentPhraseDisplay").innerText = this.value;
+    });
+
     function incrementTasbeeh() {
       tasbeehCount++; tasbeehTotal++;
       if (tasbeehCount >= 33) { tasbeehLaps++; tasbeehCount = 0; }
@@ -1035,7 +897,6 @@
       audioDuasPlayer.onended = () => { btn.innerText = "▶️ استماع"; };
     }
 
-    // جميع الدول والمدن الشاملة
     const locations = [
       { country: "مصر", enCountry: "Egypt", method: 5, cities: [
           { ar: "القاهرة", en: "Cairo" }, { ar: "الإسكندرية", en: "Alexandria" }, { ar: "الجيزة", en: "Giza" },
