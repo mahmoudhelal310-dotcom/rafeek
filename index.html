@@ -136,17 +136,18 @@
     .p-btn { background: none; border: none; font-size: 1.2rem; cursor: pointer; color: var(--text); }
     audio { flex: 1; height: 36px; }
 
-    .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.65); display: none; align-items: center; justify-content: center; z-index: 2000; padding: 15px; }
-    .modal-content { background: var(--modal-bg); width: 100%; max-width: 800px; max-height: 90vh; border-radius: 16px; display: flex; flex-direction: column; overflow: hidden; box-shadow: 0 10px 32px rgba(0,0,0,0.3); }
-    .modal-header { padding: 12px 18px; background: var(--primary); color: #fff; display: flex; justify-content: space-between; align-items: center; }
-    .modal-actions { display: flex; align-items: center; gap: 8px; }
+    /* تعديل لملء الشاشة بالكامل عند القراءة */
+    .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.75); display: none; align-items: center; justify-content: center; z-index: 2000; padding: 0; }
+    .modal-content { background: var(--modal-bg); width: 100vw; height: 100vh; max-width: 100vw; max-height: 100vh; border-radius: 0; display: flex; flex-direction: column; overflow: hidden; box-shadow: none; }
+    .modal-header { padding: 14px 20px; background: var(--primary); color: #fff; display: flex; justify-content: space-between; align-items: center; }
+    .modal-actions { display: flex; align-items: center; gap: 10px; }
     .font-ctrl-btn { background: rgba(255,255,255,0.18); border: 1px solid rgba(255,255,255,0.3); color: #fff; border-radius: 6px; padding: 4px 10px; cursor: pointer; font-weight: 700; }
-    .modal-body { padding: 22px; overflow-y: auto; line-height: 2.3; font-size: 1.4rem; font-family: 'Amiri', serif; text-align: justify; color: var(--text); max-height: 50vh; }
-    .bismillah { text-align: center; font-weight: 700; font-size: 1.6rem; margin-bottom: 20px; color: var(--accent); }
+    .modal-body { padding: 24px; overflow-y: auto; line-height: 2.5; font-size: 1.45rem; font-family: 'Amiri', serif; text-align: justify; color: var(--text); flex-grow: 1; }
+    .bismillah { text-align: center; font-weight: 700; font-size: 1.8rem; margin-bottom: 20px; color: var(--accent); }
     .ayah-text { cursor: pointer; padding: 2px 4px; border-radius: 4px; color: var(--text); }
-    .ayah-badge { display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; border: 1.5px solid var(--accent); border-radius: 50%; font-size: 0.85rem; margin: 0 6px; color: var(--primary); font-weight: 700; background: rgba(212, 175, 55, 0.08); cursor: pointer; }
+    .ayah-badge { display: inline-flex; align-items: center; justify-content: center; width: 34px; height: 34px; border: 1.5px solid var(--accent); border-radius: 50%; font-size: 0.85rem; margin: 0 6px; color: var(--primary); font-weight: 700; background: rgba(212, 175, 55, 0.08); cursor: pointer; }
 
-    .tafsir-box { border-top: 3px solid var(--accent); background: var(--modal-bg); padding: 16px 20px; font-family: 'Cairo', sans-serif; font-size: 1rem; line-height: 1.8; max-height: 35vh; overflow-y: auto; display: block; color: var(--text); flex-shrink: 0; }
+    .tafsir-box { border-top: 3px solid var(--accent); background: var(--modal-bg); padding: 16px 20px; font-family: 'Cairo', sans-serif; font-size: 1rem; line-height: 1.8; max-height: 38vh; overflow-y: auto; display: block; color: var(--text); flex-shrink: 0; }
     .tafsir-title { font-weight: 700; color: var(--primary); margin-bottom: 6px; display: flex; justify-content: space-between; align-items: center; }
     .tafsir-tool-btn { background: var(--accent-soft); border: 1px solid var(--accent); color: var(--primary); padding: 4px 10px; border-radius: 6px; cursor: pointer; font-size: 0.8rem; font-weight: bold; }
     .ayah-audio-btn { display: inline-flex; align-items: center; justify-content: center; width: 26px; height: 26px; border-radius: 50%; background: var(--accent-soft); color: var(--primary); cursor: pointer; font-size: 0.75rem; margin: 0 4px; vertical-align: middle; }
@@ -910,7 +911,6 @@
       audioDuasPlayer.onended = () => { btn.innerText = "▶️ استماع"; };
     }
 
-    // محافظات مصر الـ 27 كاملة بدقة
     const locations = [
       { country: "مصر", enCountry: "Egypt", method: 5, cities: [
           { ar: "القاهرة", en: "Cairo" }, { ar: "الإسكندرية", en: "Alexandria" }, { ar: "الجيزة", en: "Giza" },
