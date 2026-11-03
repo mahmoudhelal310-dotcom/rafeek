@@ -1,613 +1,504 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<title>صدقة جارية عن روح الأستاذ الششتاوي عبدالعظيم | إذاعة القرآن الكريم</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <title>رفيق المسلم | تلاوات، قراءة، أذكار، وإذاعة مباشرة</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="favicon.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
 
-<link rel="icon" href="favicon.png" type="image/png">
+  <style>
+    :root {
+      --primary: #1b4332;
+      --primary-light: #2d6a4f;
+      --accent: #d4af37;
+      --accent-soft: rgba(212, 175, 55, 0.15);
+      --bg: #12181f; /* لون خلفية داكن فخم يشبه الصورة */
+      --card-bg: #fdfbf7; /* لون بيج هادئ للبطاقات شبيه بالصورة */
+      --text: #2c221e;
+      --text-muted: #78716c;
+      --border: #e6dfd5;
+      --header-gradient: linear-gradient(135deg, #0d231a, #1b4332);
+    }
 
-<link rel="manifest" href="data:application/manifest+json,{
-  \"name\": \"صدقة جارية عن روح الأستاذ الششتاوي عبدالعظيم\",
-  \"short_name\": \"صدقة جارية\",
-  \"description\": \"إذاعة القرآن الكريم صدقة جارية عن روح الأستاذ الششتاوي عبدالعظيم\",
-  \"start_url\": \"/\",
-  \"display\": \"standalone\",
-  \"background_color\": \"#0f2027\",
-  \"theme_color\": \"#0b2e2f\",
-  \"icons\": [{\"src\": \"favicon.png\", \"sizes\": \"64x64\", \"type\": \"image/png\"}]
-}">
+    body.dark-mode {
+      --primary: #2d6a4f;
+      --primary-light: #40916c;
+      --accent: #e9c46a;
+      --accent-soft: rgba(233, 196, 106, 0.2);
+      --bg: #121417;
+      --card-bg: #1c1f24;
+      --text: #e9ecef;
+      --text-muted: #adb5bd;
+      --border: #2b3038;
+      --header-gradient: linear-gradient(135deg, #0d1f17, #1b4332);
+    }
 
-<!-- Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-91HP8NVXK5"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-91HP8NVXK5');
-</script>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Cairo', -apple-system, BlinkMacSystemFont, sans-serif;
+      transition: background-color 0.25s, color 0.25s;
+    }
 
-<style>
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      padding-bottom: 120px;
+      min-height: 100vh;
+    }
 
-body{
-    margin:0;
-    font-family:Tahoma, Arial;
-    background:linear-gradient(to bottom,#0f2027,#203a43,#2c5364);
-    color:white;
-    padding:15px;
-    padding-top:80px;
-}
+    header {
+      background: var(--header-gradient);
+      color: #fff;
+      padding: 16px 14px 12px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.2);
+      text-align: center;
+      border-bottom-left-radius: 24px;
+      border-bottom-right-radius: 24px;
+    }
 
-/* الشريط العلوي */
+    .app-title {
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: var(--accent);
+      margin-bottom: 4px;
+    }
 
-.top-banner{
-    position:fixed;
-    top:0;
-    right:0;
-    width:100%;
-    background:linear-gradient(90deg,#ffeb3b,#4caf50);
-    color:#000;
-    text-align:center;
-    padding:12px 5px;
-    font-size:18px;
-    font-weight:bold;
-    z-index:999;
-    box-shadow:0 3px 8px rgba(0,0,0,0.3);
-    border-bottom-left-radius:10px;
-    border-bottom-right-radius:10px;
-}
+    .app-subtitle {
+      font-size: 0.78rem;
+      color: #cbd5e1;
+      margin-bottom: 10px;
+    }
 
-/* صندوق الإذاعة */
+    .top-bar-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 500px;
+      margin: 0 auto 10px;
+      padding: 0 6px;
+    }
 
-.radio-box{
-    max-width:420px;
-    margin:15px auto;
-    background:rgba(0,0,0,0.5);
-    padding:20px;
-    border-radius:18px;
-    text-align:center;
-}
+    .icon-btn {
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.25);
+      color: #fff;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.95rem;
+    }
 
-.creator{
-    font-size:17px;
-    color:#ffd700;
-    font-weight:bold;
-    margin-bottom:8px;
-}
+    .location-selector-box {
+      max-width: 500px;
+      margin: 0 auto 10px;
+      display: flex;
+      justify-content: center;
+      gap: 6px;
+    }
 
-.radio-icon{
-    font-size:55px;
-    margin-bottom:8px;
-}
+    .location-selector-box select {
+      background: rgba(255,255,255,0.18);
+      color: #fff;
+      border: 1px solid rgba(255,255,255,0.3);
+      padding: 4px 10px;
+      border-radius: 8px;
+      font-size: 0.8rem;
+      outline: none;
+      cursor: pointer;
+    }
+    .location-selector-box select option {
+      background: #1c1f24;
+      color: #fff;
+    }
 
-h1{
-    font-size:24px;
-    margin-bottom:6px;
-}
+    .prayers-mini-bar {
+      max-width: 500px;
+      margin: 0 auto;
+      background: rgba(0,0,0,0.25);
+      border-radius: 12px;
+      padding: 8px 10px;
+      display: flex;
+      justify-content: space-around;
+      font-size: 0.78rem;
+    }
 
-p{
-    font-size:15px;
-    margin-bottom:10px;
-}
+    .prayer-box {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .prayer-box span:first-child { color: #94a3b8; font-size: 0.68rem; }
+    .prayer-box span:last-child { font-weight: 700; color: var(--accent); }
 
-/* زر التشغيل */
+    /* شبكة البطاقات (Dashboard Grid) شبيهة بالصورة */
+    .dashboard-container {
+      max-width: 500px;
+      margin: 20px auto;
+      padding: 0 12px;
+    }
 
-button{
-    width:100%;
-    padding:14px;
-    font-size:18px;
-    border:none;
-    border-radius:15px;
-    background:#1abc9c;
-    color:#000;
-    cursor:pointer;
-    font-weight:bold;
-}
+    .dashboard-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
 
-button:active{
-    background:#16a085;
-}
+    .dashboard-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 18px 10px;
+      text-align: center;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
 
-/* الأدعية والآيات */
+    .dashboard-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 16px rgba(212, 175, 55, 0.2);
+      border-color: var(--accent);
+    }
 
-.box{
-    margin:8px auto;
-    padding:10px;
-    max-width:600px;
-    text-align:center;
-    font-size:17px;
-    border-radius:12px;
-    font-weight:bold;
-    opacity:0;
-    transition:opacity 1.5s ease-in-out;
-}
+    .card-icon {
+      font-size: 32px;
+    }
 
-#duaa{
-    background:#ffffff;
-    color:#2e7d32;
-}
+    .card-title {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--text);
+    }
 
-#ayah{
-    background:#f1f8e9;
-    color:#2e7d32;
-}
+    /* أقسام المحتوى الداخلي */
+    .section-view {
+      display: none;
+      max-width: 600px;
+      margin: 15px auto;
+      padding: 0 12px;
+    }
 
-/* رسالة فيسبوك */
+    .back-home-btn {
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 10px;
+      font-weight: 700;
+      cursor: pointer;
+      margin-bottom: 14px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.85rem;
+    }
 
-#fbNotice{
-    display:none;
-    margin-top:10px;
-    padding:8px;
-    background:#fff3cd;
-    color:#000;
-    border-radius:10px;
-    font-size:14px;
-}
+    /* مشغل الصوت الثابت بالأسفل */
+    .player-bar {
+      position: fixed; bottom: 0; left: 0; right: 0; background: var(--card-bg); border-top: 1px solid var(--border); padding: 8px 14px; display: flex; flex-direction: column; align-items: center; gap: 6px; z-index: 1000;
+    }
+    .player-details { display: flex; align-items: center; gap: 6px; font-weight: 700; color: var(--primary); font-size: 0.82rem; }
+    .player-controls-row { display: flex; align-items: center; gap: 10px; width: 100%; max-width: 500px; }
+    .p-btn { background: none; border: none; font-size: 1.1rem; cursor: pointer; color: var(--text); }
+    audio { flex: 1; height: 32px; }
 
-#fbNotice a{
-    display:block;
-    margin-top:4px;
-    padding:4px;
-    background:#1abc9c;
-    color:#000;
-    text-decoration:none;
-    border-radius:8px;
-    font-weight:bold;
-}
-
-#copyBtn{
-    margin-top:4px;
-    padding:5px 10px;
-    background:#1abc9c;
-    color:#000;
-    border:none;
-    border-radius:8px;
-    font-weight:bold;
-    cursor:pointer;
-}
-
-/* المشاركة */
-
-.bottom-note{
-    margin:10px auto;
-    padding:10px;
-    max-width:500px;
-    background:#f1f8e9;
-    border-radius:8px;
-    text-align:center;
-    font-size:17px;
-    color:#2e7d32;
-    font-weight:bold;
-}
-
-.bottom-note button{
-    margin-top:8px;
-}
-
-</style>
+    /* التذييل والصدقة الجارية */
+    footer {
+      text-align: center; margin: 30px auto 100px; padding: 20px 14px; max-width: 500px; background: var(--card-bg); border: 1px solid var(--border); border-radius: 16px;
+    }
+  </style>
 </head>
-
 <body>
 
-<!-- الشريط العلوي -->
+  <header>
+    <div class="top-bar-row">
+      <div style="font-size: 0.78rem; color: var(--accent);">by Mahmoud Helal</div>
+      <button class="icon-btn" id="themeBtn" title="الوضع الليلي / النهار">🌙</button>
+    </div>
+    <div class="app-title">🌙 رفيق المسلم</div>
+    <div class="app-subtitle">قرآن كريم - ذكر - أذان - تسبيح</div>
 
-<div class="top-banner">
-🌿 هذا العمل صدقة جارية عن روح الأستاذ الششتاوي عبدالعظيم — نسألكم الدعاء
-</div>
-
-
-<!-- صندوق الإذاعة -->
-
-<div class="radio-box">
-
-    <div class="creator">
-        by Mahmoud Helal
+    <div class="location-selector-box">
+      <select id="countrySelect" onchange="onCountryChange()"></select>
+      <select id="citySelect" onchange="onCityChange()"></select>
     </div>
 
-    <div class="radio-icon">
-        📻
+    <div class="prayers-mini-bar">
+      <div class="prayer-box"><span>الفجر</span><span id="fajrTime">--:--</span></div>
+      <div class="prayer-box"><span>الشروق</span><span id="sunriseTime">--:--</span></div>
+      <div class="prayer-box"><span>الظهر</span><span id="dhuhrTime">--:--</span></div>
+      <div class="prayer-box"><span>العصر</span><span id="asrTime">--:--</span></div>
+      <div class="prayer-box"><span>المغرب</span><span id="maghribTime">--:--</span></div>
+      <div class="prayer-box"><span>العشاء</span><span id="ishaTime">--:--</span></div>
     </div>
+  </header>
 
-    <h1>
-        إذاعة القرآن الكريم
-    </h1>
-
-    <p style="color:#c8e6c9;font-weight:bold;">
-        نسأل الله أن يجعلها في ميزان حسناته
-    </p>
-
-    <button id="playBtn" onclick="togglePlay()">
-        ▶️ تشغيل الإذاعة
-    </button>
-
-    <audio id="radio" preload="none" playsinline></audio>
-
-
-    <!-- رسالة فيسبوك -->
-
-    <div id="fbNotice">
-
-        🔊 إذا لم يعمل الصوت داخل فيسبوك
-
-        🌐 افتح الرابط في أي متصفح:
-
-        <a
-        id="fbLink"
-        href="https://mahmoudhelal310-dotcom.github.io/quran-radio/"
-        target="_blank">
-
-        https://mahmoudhelal310-dotcom.github.io/quran-radio/
-
-        </a>
-
-        <button id="copyBtn">
-            نسخ الرابط
-        </button>
-
+  <!-- الشاشة الرئيسية (شكل الأيقونات الشبكية مثل الصورة) -->
+  <div class="dashboard-container" id="homeDashboard">
+    <div class="dashboard-grid">
+      <div class="dashboard-card" onclick="openSection('quranSection')">
+        <div class="card-icon">📜</div>
+        <div class="card-title">القرآن الكريم</div>
+      </div>
+      <div class="dashboard-card" onclick="openSection('azkarSection')">
+        <div class="card-icon">🤲</div>
+        <div class="card-title">أذكار المسلم</div>
+      </div>
+      <div class="dashboard-card" onclick="openSection('radioSection')">
+        <div class="card-icon">📻</div>
+        <div class="card-title">إذاعة القرآن</div>
+      </div>
+      <div class="dashboard-card" onclick="openSection('tasbeehSection')">
+        <div class="card-icon">📿</div>
+        <div class="card-title">السبحة الإلكترونية</div>
+      </div>
+      <div class="dashboard-card" onclick="openSection('searchSection')">
+        <div class="card-icon">🔍</div>
+        <div class="card-title">البحث في الآيات</div>
+      </div>
+      <div class="dashboard-card" onclick="openSection('contactSection')">
+        <div class="card-icon">📩</div>
+        <div class="card-title">تواصل واقتراحات</div>
+      </div>
     </div>
+  </div>
 
-</div>
+  <!-- الأقسام الداخلية -->
+  <div class="section-view" id="quranSection">
+    <button class="back-home-btn" onclick="goHome()">⬅ العودة للرئيسية</button>
+    <div style="background:var(--card-bg); padding:14px; border-radius:14px; border:1px solid var(--border);">
+      <div style="margin-bottom:10px;">
+        <label style="font-size:0.8rem; font-weight:750;">🎙️ اختيار القارئ:</label>
+        <select id="reciterSelect" style="width:100%; padding:10px; border-radius:8px; border:1px solid var(--border); background:var(--bg); color:var(--text); margin-top:4px;"></select>
+      </div>
+      <div style="margin-bottom:12px;">
+        <input type="text" id="searchInput" placeholder="ابحث باسم السورة..." style="width:100%; padding:10px; border-radius:8px; border:1px solid var(--border); background:var(--bg); color:var(--text);">
+      </div>
+      <div id="surahContainer" style="display:grid; grid-template-columns:1fr; gap:8px;"></div>
+    </div>
+  </div>
 
+  <div class="section-view" id="radioSection">
+    <button class="back-home-btn" onclick="goHome()">⬅ العودة للرئيسية</button>
+    <div style="background:var(--card-bg); padding:20px; border-radius:16px; text-align:center; border:1px solid var(--border);">
+      <h2>إذاعة القرآن الكريم</h2>
+      <p style="font-size:0.85rem; color:var(--text-muted); margin:8px 0 14px;">بث مباشر طوال اليوم</p>
+      <select id="radioStationSelect" onchange="changeRadioStation()" style="width:100%; padding:10px; border-radius:8px; border:1px solid var(--border); background:var(--bg); color:var(--text); margin-bottom:14px;">
+        <option value="cairo" selected>📻 إذاعة القرآن الكريم من القاهرة</option>
+        <option value="makkah">🕋 إذاعة القرآن الكريم من مكة المكرمة</option>
+        <option value="tarateel">🎙️ تلاوات خاشعة منوعة</option>
+      </select>
+      <button class="btn btn-play" id="radioPlayBtn" onclick="toggleRadioPlay()" style="width:100%; padding:14px; border-radius:10px; font-size:1rem; font-weight:bold; background:#1abc9c; color:#000;">▶️ تشغيل الإذاعة</button>
+      <audio id="liveRadioAudio" preload="none" playsinline></audio>
+    </div>
+  </div>
 
-<!-- الدعاء -->
+  <div class="section-view" id="azkarSection">
+    <button class="back-home-btn" onclick="goHome()">⬅ العودة للرئيسية</button>
+    <div style="background:var(--card-bg); padding:16px; border-radius:16px; border:1px solid var(--border);">
+      <div style="display:flex; gap:6px; overflow-x:auto; margin-bottom:12px; padding-bottom:4px;">
+        <button class="btn btn-read" onclick="loadAzkarCategory('morning')">الصباح</button>
+        <button class="btn btn-read" onclick="loadAzkarCategory('evening')">المساء</button>
+        <button class="btn btn-read" onclick="loadAzkarCategory('sleep')">النوم</button>
+        <button class="btn btn-read" onclick="loadAzkarCategory('after_prayer')">بعد الصلاة</button>
+      </div>
+      <div id="azkarList"></div>
+    </div>
+  </div>
 
-<div id="duaa" class="box"></div>
+  <div class="section-view" id="tasbeehSection">
+    <button class="back-home-btn" onclick="goHome()">⬅ العودة للرئيسية</button>
+    <div style="background:var(--card-bg); padding:20px; border-radius:16px; text-align:center; border:1px solid var(--border);">
+      <h3>📿 السبحة الإلكترونية</h3>
+      <div style="width:140px; height:140px; border-radius:50%; border:7px solid var(--accent); margin:16px auto; display:flex; flex-direction:column; align-items:center; justify-content:center; cursor:pointer; background:radial-gradient(circle, var(--card-bg), var(--accent-soft));" onclick="incrementTasbeeh()">
+        <span style="font-size:2.5rem; font-weight:800; color:var(--primary);" id="tasbeehCount">0</span>
+        <span style="font-size:0.75rem; color:var(--text-muted);">اضغط للتسبيح</span>
+      </div>
+      <div style="font-size:0.85rem; font-weight:700; margin-bottom:12px;">الإجمالي: <span id="tasbeehTotal" style="color:var(--accent);">0</span></div>
+      <button class="btn btn-read" onclick="resetTasbeeh()">🔄 إعادة ضبط</button>
+    </div>
+  </div>
 
+  <div class="section-view" id="searchSection">
+    <button class="back-home-btn" onclick="goHome()">⬅ العودة للرئيسية</button>
+    <div style="background:var(--card-bg); padding:16px; border-radius:16px; border:1px solid var(--border);">
+      <div style="display:flex; gap:6px; margin-bottom:12px;">
+        <input type="text" id="ayahSearchInput" placeholder="اكتب كلمة للبحث..." style="flex:1; padding:10px; border-radius:8px; border:1px solid var(--border); background:var(--bg); color:var(--text);">
+        <button class="btn btn-play" onclick="searchAyat()">بحث</button>
+      </div>
+      <div id="ayahSearchResults"></div>
+    </div>
+  </div>
 
-<!-- الآية -->
+  <div class="section-view" id="contactSection">
+    <button class="back-home-btn" onclick="goHome()">⬅ العودة للرئيسية</button>
+    <div style="background:var(--card-bg); padding:16px; border-radius:16px; border:1px solid var(--border);">
+      <h2>📩 تواصل واقتراحات</h2>
+      <form onsubmit="handleFeedbackSubmit(event)" style="margin-top:10px; display:flex; flex-direction:column; gap:10px;">
+        <input type="text" id="senderName" required placeholder="اسمك الكريم..." style="padding:10px; border-radius:8px; border:1px solid var(--border); background:var(--bg); color:var(--text);">
+        <textarea id="msgBody" required rows="3" placeholder="اكتب رسالتك..." style="padding:10px; border-radius:8px; border:1px solid var(--border); background:var(--bg); color:var(--text); resize:vertical;"></textarea>
+        <button type="submit" class="btn btn-play" style="padding:12px;">💬 إرسال عبر واتساب</button>
+      </form>
+    </div>
+  </div>
 
-<div id="ayah" class="box"></div>
+  <footer>
+    <div style="font-size: 0.95rem; font-weight: 700; color: var(--primary); margin-bottom: 6px;">🌿 صدقة جارية خالصة لوجه الله تعالى</div>
+    <p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 8px;">اللهم اجعل هذا العمل خالصاً لوجهك الكريم، وتقبله صدقة جارية عنا وعن والدينا وأهلينا وكل من ساهم في نشره واستمع إليه..</p>
+    <div style="display: inline-block; padding: 4px 12px; background: var(--accent-soft); border: 1px solid var(--accent); border-radius: 16px; font-size: 0.82rem; font-weight: 700; color: var(--primary);">
+      تم التصميم والتطوير بواسطة: <span style="color: var(--accent); font-weight: 800;">Mahmoud Helal</span>
+    </div>
+  </footer>
 
+  <div class="player-bar" id="playerBar">
+    <div class="player-details">
+      <span>السورة الحالية:</span>
+      <span id="currentSurahTitle">اختر سورة للبدء</span>
+    </div>
+    <div class="player-controls-row">
+      <button class="p-btn" id="repeatModeBtn" onclick="toggleRepeatMode()">🔁</button>
+      <button class="p-btn" onclick="playNextSurah()">⏭</button>
+      <audio id="audioPlayer" controls></audio>
+      <audio id="singleAyahAudioPlayer" preload="none"></audio>
+      <audio id="adhanAudio" src="https://islamic.network/audio/adhan/makkah.mp3" preload="auto"></audio>
+      <button class="p-btn" onclick="playPrevSurah()">⏮</button>
+    </div>
+  </div>
 
-<!-- المشاركة -->
+  <script>
+    const reciters = [
+      { name: "الشيخ خالد القحطاني", server: "https://server10.mp3quran.net/qht/" },
+      { name: "الشيخ مشاري راشد العفاسي", server: "https://server8.mp3quran.net/afs/" },
+      { name: "الشيخ عبد الباسط عبد الصمد", server: "https://server7.mp3quran.net/basit/" },
+      { name: "الشيخ محمود خليل الحصري", server: "https://server13.mp3quran.net/husr/" },
+      { name: "الشيخ ماهر المعيقلي", server: "https://server12.mp3quran.net/maher/" }
+    ];
 
-<div class="bottom-note">
+    const surahNames = ["الفاتحة", "البقرة", "آل عمران", "النساء", "المائدة", "الأنعام", "الأعراف", "الأنفال", "التوبة", "يونس", "هود", "يوسف", "الرعد", "إبراهيم", "الحجر", "النحل", "الإسراء", "الكهف", "مريم", "طه", "الأنبياء", "الحج", "المؤمنون", "النور", "الفرقان", "الشعراء", "النمل", "القصص", "العنكبوت", "الروم", "لقمان", "السجدة", "الأحزاب", "سبأ", "فاطر", "يس", "الصافات", "ص", "الزمر", "غافر", "فصلت", "الشورى", "الزخرف", "الدخان", "الجاثية", "الأحقاف", "محمد", "الفتح", "الحجرات", "ق", "الذاريات", "الطور", "النجم", "القمر", "الرحمن", "الواقعة", "الحديد", "المجادلة", "الحشر", "الممتحنة", "الصف", "الجمعة", "المنافقون", "التغابن", "الطلاق", "التحريم", "الملك", "القلم", "الحاقة", "المعارج", "نوح", "الجن", "المزمل", "المدثر", "القيامة", "الإنسان", "المرسلات", "النبأ", "النازعات", "عبس", "التكوير", "الانفطار", "المطففين", "الانشقاق", "البروج", "الطارق", "الأعلى", "الغاشية", "الفجر", "البلد", "الشمس", "الليل", "الضحى", "الشرح", "التين", "العلق", "القدر", "البينة", "الزلزلة", "العاديات", "القارعة", "التكاثر", "العصر", "الهمزة", "الفيل", "قريش", "الماعون", "الكوثر", "الكافرون", "النصر", "المسد", "الإخلاص", "الفلق", "الناس"];
 
-🌿 كل استماعك للقرآن صدقة جارية — شارك الرابط لتشارك الأجر
+    let currentSurahIndex = 0;
+    const container = document.getElementById("surahContainer");
+    const audioPlayer = document.getElementById("audioPlayer");
+    const currentTitle = document.getElementById("currentSurahTitle");
+    const searchInput = document.getElementById("searchInput");
+    const reciterSelect = document.getElementById("reciterSelect");
 
-<br>
+    reciters.forEach((reciter, index) => {
+      const opt = document.createElement("option");
+      opt.value = index; opt.textContent = reciter.name;
+      reciterSelect.appendChild(opt);
+    });
 
-<button id="shareBtn">
-    📤 مشاركة الرابط
-</button>
+    function renderSurahs() {
+      const filter = searchInput.value.trim();
+      const currentReciter = reciters[reciterSelect.value];
+      container.innerHTML = "";
+      surahNames.forEach((name, index) => {
+        if (!name.includes(filter)) return;
+        const id = index + 1;
+        const audioUrl = `${currentReciter.server}${String(id).padStart(3, '0')}.mp3`;
+        container.innerHTML += `
+          <div class="surah-card">
+            <div class="surah-info"><div class="surah-num">${id}</div><div class="surah-name">${name}</div></div>
+            <div class="surah-actions">
+              <button class="btn btn-play" onclick="playSurahByIndex(${index})">تشغيل</button>
+            </div>
+          </div>`;
+      });
+    }
 
-</div>
+    function playSurahByIndex(index) {
+      currentSurahIndex = index;
+      const currentReciter = reciters[reciterSelect.value];
+      audioPlayer.src = `${currentReciter.server}${String(index + 1).padStart(3, '0')}.mp3`;
+      currentTitle.innerText = `سورة ${surahNames[index]}`;
+      audioPlayer.play();
+    }
 
+    function playNextSurah() { if (currentSurahIndex < 113) playSurahByIndex(currentSurahIndex + 1); }
+    function playPrevSurah() { if (currentSurahIndex > 0) playSurahByIndex(currentSurahIndex - 1); }
 
-<script>
+    function openSection(sectionId) {
+      document.getElementById("homeDashboard").style.display = "none";
+      document.querySelectorAll(".section-view").forEach(el => el.style.display = "none");
+      document.getElementById(sectionId).style.display = "block";
+      if (sectionId === 'quranSection') renderSurahs();
+      if (sectionId === 'azkarSection') loadAzkarCategory('morning');
+    }
 
-/* =========================
-   تشغيل الإذاعة
-========================= */
+    function goHome() {
+      document.querySelectorAll(".section-view").forEach(el => el.style.display = "none");
+      document.getElementById("homeDashboard").style.display = "block";
+    }
 
-let playing = false;
+    const locations = [
+      { country: "مصر", enCountry: "Egypt", method: 5, cities: [{ ar: "القاهرة", en: "Cairo" }, { ar: "الإسكندرية", en: "Alexandria" }] },
+      { country: "السعودية", enCountry: "Saudi Arabia", method: 4, cities: [{ ar: "مكة المكرمة", en: "Makkah" }, { ar: "الرياض", en: "Riyadh" }] }
+    ];
 
-const radio = document.getElementById("radio");
+    function initLocationSelector() {
+      const cSelect = document.getElementById("countrySelect");
+      cSelect.innerHTML = "";
+      locations.forEach((loc, idx) => {
+        cSelect.innerHTML += `<option value="${idx}">${loc.country}</option>`;
+      });
+      updateCities(0, true);
+    }
 
-const btn = document.getElementById("playBtn");
+    function updateCities(countryIdx, loadSaved = false) {
+      const ciSelect = document.getElementById("citySelect");
+      const loc = locations[countryIdx] || locations[0];
+      ciSelect.innerHTML = "";
+      loc.cities.forEach((city, idx) => {
+        ciSelect.innerHTML += `<option value="${idx}">${city.ar}</option>`;
+      });
+      fetchPrayers();
+    }
 
-const notice = document.getElementById("fbNotice");
+    function onCountryChange() {
+      updateCities(document.getElementById("countrySelect").value, false);
+    }
+    function onCityChange() { fetchPrayers(); }
 
-
-function togglePlay(){
-
-    if(!playing){
-
-        if(!radio.src){
-
-            radio.src =
-            "https://stream.radiojar.com/8s5u5tpdtwzuv";
-
+    async function fetchPrayers() {
+      const loc = locations[document.getElementById("countrySelect").value];
+      const city = loc.cities[document.getElementById("citySelect").value];
+      try {
+        const res = await fetch(`https://api.aladhan.com/v1/timingsByCity?city=${encodeURIComponent(city.en)}&country=${encodeURIComponent(loc.enCountry)}&method=${loc.method}`);
+        const data = await res.json();
+        if (data.data?.timings) {
+          const t = data.data.timings;
+          document.getElementById("fajrTime").innerText = t.Fajr;
+          document.getElementById("sunriseTime").innerText = t.Sunrise;
+          document.getElementById("dhuhrTime").innerText = t.Dhuhr;
+          document.getElementById("asrTime").innerText = t.Asr;
+          document.getElementById("maghribTime").innerText = t.Maghrib;
+          document.getElementById("ishaTime").innerText = t.Isha;
         }
-
-        radio.load();
-
-        radio.play()
-
-        .then(()=>{
-
-            notice.style.display="none";
-
-        })
-
-        .catch(()=>{
-
-            notice.style.display="block";
-
-        });
-
-        btn.innerHTML =
-        "⏸️ إيقاف الإذاعة";
-
-        playing = true;
-
+      } catch(e) {}
     }
 
-    else{
-
-        radio.pause();
-
-        btn.innerHTML =
-        "▶️ تشغيل الإذاعة";
-
-        playing = false;
-
-    }
-
-}
-
-
-/* =========================
-   نسخ الرابط
-========================= */
-
-document.getElementById("copyBtn").onclick = () => {
-
-    navigator.clipboard.writeText(
-        document.getElementById("fbLink").href
-    )
-
-    .then(()=>{
-
-        document.getElementById("copyBtn").innerText =
-        "تم النسخ ✅";
-
+    const themeBtn = document.getElementById("themeBtn");
+    themeBtn.addEventListener("click", () => {
+      document.body.classList.toggle("dark-mode");
+      themeBtn.innerText = document.body.classList.contains("dark-mode") ? "☀️" : "🌙";
     });
 
-};
-
-
-/* =========================
-   الأدعية
-========================= */
-
-const duaas = [
-
-"🤲 اللهم اغفر له وارحمه وعافه واعفُ عنه",
-
-"🤲 اللهم اجعل قبره روضة من رياض الجنة",
-
-"🤲 اللهم آنس وحشته ونوّر قبره",
-
-"🤲 اللهم ارحمه رحمةً واسعة واغفر له ذنوبه",
-
-"🤲 اللهم ارفع درجته في المهديين واخلفه في عقبه في الغابرين",
-
-"🤲 اللهم اجعل قبره نورًا وضياءً وسعةً وطمأنينة",
-
-"🤲 اللهم اجعل القرآن شفيعًا له يوم القيامة",
-
-"🤲 اللهم اجعل هذا العمل صدقة جارية عنه",
-
-"🤲 اللهم اجعل ما يُقرأ من القرآن في ميزان حسناته",
-
-"🤲 اللهم أكرم نزله ووسّع مدخله",
-
-"🤲 اللهم اغسله بالماء والثلج والبرد ونقّه من الخطايا",
-
-"🤲 اللهم اجعل الجنة داره وقراره",
-
-"🤲 اللهم ارزقه الفردوس الأعلى من الجنة",
-
-"🤲 اللهم حرّم وجهه على النار وأدخله الجنة برحمتك",
-
-"🤲 اللهم اجمعه مع النبيين والصديقين والشهداء والصالحين",
-
-"🤲 اللهم اجعل قبره خير منزل بعد الدنيا",
-
-"🤲 اللهم اجعل له نورًا عن يمينه وعن شماله ومن فوقه ومن تحته",
-
-"🤲 اللهم اجعل الملائكة تحفّه برحمتك",
-
-"🤲 اللهم ثبّته عند السؤال",
-
-"🤲 اللهم اجعل آخرته خيرًا له من دنياه",
-
-"🤲 اللهم اكتب له بكل حرف من القرآن حسنة",
-
-"🤲 اللهم اجعل حسناته مضاعفة وذنوبه مغفورة",
-
-"🤲 اللهم اجعل له نصيبًا من رحمتك وعفوك ورضوانك",
-
-"🤲 اللهم اجعل ذكراه طيبة وأجره باقيًا",
-
-"🤲 اللهم اجعل كل من يستمع إلى القرآن هنا سببًا في زيادة حسناته",
-
-"🤲 اللهم اجمعنا به في جنات النعيم"
-
-];
-
-
-let d = 0;
-
-const duaaDiv =
-document.getElementById("duaa");
-
-
-function changeDuaa(){
-
-    duaaDiv.style.opacity = 0;
-
-    setTimeout(()=>{
-
-        duaaDiv.innerHTML =
-        duaas[d];
-
-        duaaDiv.style.opacity = 1;
-
-        d =
-        (d + 1) % duaas.length;
-
-    },1500);
-
-}
-
-
-/* =========================
-   الآيات
-========================= */
-
-const ayat = [
-
-"﴿ أَلَا بِذِكْرِ اللَّهِ تَطْمَئِنُّ الْقُلُوبُ ﴾",
-
-"﴿ إِنَّ مَعَ الْعُسْرِ يُسْرًا ﴾",
-
-"﴿ وَرَحْمَتِي وَسِعَتْ كُلَّ شَيْءٍ ﴾",
-
-"﴿ إِنَّ اللَّهَ غَفُورٌ رَحِيمٌ ﴾",
-
-"﴿ كُلُّ نَفْسٍ ذَائِقَةُ الْمَوْتِ ﴾",
-
-"﴿ فَاذْكُرُونِي أَذْكُرْكُمْ ﴾",
-
-"﴿ وَمَن يَتَّقِ اللَّهَ يَجْعَل لَّهُ مَخْرَجًا ﴾",
-
-"﴿ إِنَّ اللَّهَ مَعَ الصَّابِرِينَ ﴾",
-
-"﴿ وَقُل رَّبِّ اغْفِرْ وَارْحَمْ وَأَنتَ خَيْرُ الرَّاحِمِينَ ﴾",
-
-"﴿ وَمَن يَعْمَلْ مِنَ الصَّالِحَاتِ وَهُوَ مُؤْمِنٌ فَلَا يَخَافُ ظُلْمًا وَلَا هَضْمًا ﴾"
-
-];
-
-
-let a = 0;
-
-const ayahDiv =
-document.getElementById("ayah");
-
-
-function changeAyah(){
-
-    ayahDiv.style.opacity = 0;
-
-    setTimeout(()=>{
-
-        ayahDiv.innerHTML =
-        "📖 " + ayat[a];
-
-        ayahDiv.style.opacity = 1;
-
-        a =
-        (a + 1) % ayat.length;
-
-    },1500);
-
-}
-
-
-/* =========================
-   زر المشاركة
-========================= */
-
-const shareBtn =
-document.getElementById("shareBtn");
-
-
-const shareLink =
-"https://mahmoudhelal310-dotcom.github.io/quran-radio/";
-
-
-shareBtn.onclick = () => {
-
-    if(navigator.share){
-
-        navigator.share({
-
-            title:
-            "صدقة جارية عن روح الأستاذ الششتاوي عبدالعظيم",
-
-            text:
-            "🌿 كل استماعك للقرآن صدقة جارية — شارك الرابط لتشارك الأجر",
-
-            url:
-            shareLink
-
-        })
-
-        .catch((err)=>{
-            console.log("مشاركة فشلت",err);
-        });
-
-    }
-
-    else{
-
-        navigator.clipboard.writeText(shareLink)
-
-        .then(()=>{
-
-            alert(
-            "تم نسخ الرابط ✅\nيمكنك مشاركته مع من تحب"
-            );
-
-        })
-
-        .catch(()=>{
-
-            alert(
-            "فشل نسخ الرابط، انسخه يدويًا"
-            );
-
-        });
-
-    }
-
-};
-
-
-/* =========================
-   بدء الأدعية والآيات
-========================= */
-
-changeDuaa();
-
-changeAyah();
-
-
-/* تغيير الدعاء كل 12 ثانية */
-
-setInterval(
-    changeDuaa,
-    12000
-);
-
-
-/* تغيير الآية كل 10 ثوانٍ */
-
-setInterval(
-    changeAyah,
-    10000
-);
-
-
-/* =========================
-   Service Worker
-========================= */
-
-if("serviceWorker" in navigator){
-
-    navigator.serviceWorker.register(
-        "service-worker.js"
-    )
-
-    .then(()=>{
-        console.log(
-        "Service Worker registered"
-        );
-    })
-
-    .catch((err)=>{
-        console.log(
-        "Service Worker failed",
-        err
-        );
+    window.addEventListener('DOMContentLoaded', () => {
+      initLocationSelector();
     });
-
-}
-
-</script>
-
+  </script>
 </body>
 </html>
