@@ -607,7 +607,6 @@
       tafsirAyahHeader.innerText = `تفسير الآية (${ayahNum}) من ${currentShareSurahName}`;
       tafsirContent.innerHTML = '<div style="color:var(--text-muted);">جاري جلب التفسير...</div>';
       
-      // التمرير التلقائي الفوري لضمان ظهور التفسير بوضوح
       tafsirBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
       modalSurahBody.scrollTo({ top: modalSurahBody.scrollHeight, behavior: 'smooth' });
 
@@ -851,10 +850,10 @@
         { text: "سُبْحَانَ اللَّهِ (33)، وَالحَمْدُ لِلَّهِ (33)، وَاللَّهُ أَكْبَرُ (33)، وَتمام المائة: لا إله إلا الله وحده لا شريك له.", target: 1 }
       ],
       audio_duas: [
-        { title: "🎵 لبيك اللهم لبيك (تلبية الحج)", audio: "https://archive.org/download/LabbaikAllahummaLabbaik_201605/Labbaik.mp3" },
-        { title: "🎵 تكبيرات العيد الحرم المكي", audio: "https://archive.org/download/TakbeeratAlEid_2016/Takbeerat.mp3" },
         { title: "🎵 دعاء خاشع بصوت الشيخ ماهر المعيقلي", audio: "https://server12.mp3quran.net/maher/001.mp3" },
-        { title: "🎵 رقية شرعية صوتية", audio: "https://server11.mp3quran.net/s_gmd/Rqia.mp3" }
+        { title: "🎵 تلاوة عطرة بصوت الشيخ عبد الباسط عبد الصمد", audio: "https://server7.mp3quran.net/basit/001.mp3" },
+        { title: "🎵 تلاوة خاشعة بصوت الشيخ مشاري العفاسي", audio: "https://server8.mp3quran.net/afs/001.mp3" },
+        { title: "🎵 تلاوة مباركة بصوت الشيخ سعد الغامدي", audio: "https://server7.mp3quran.net/s_gmd/001.mp3" }
       ]
     };
 
@@ -911,23 +910,24 @@
       audioDuasPlayer.onended = () => { btn.innerText = "▶️ استماع"; };
     }
 
+    // محافظات مصر الـ 27 كاملة بدقة
     const locations = [
       { country: "مصر", enCountry: "Egypt", method: 5, cities: [
           { ar: "القاهرة", en: "Cairo" }, { ar: "الإسكندرية", en: "Alexandria" }, { ar: "الجيزة", en: "Giza" },
-          { ar: "المنصورة", en: "Mansoura" }, { ar: "أسيوط", en: "Asyut" }, { ar: "طنطا", en: "Tanta" },
-          { ar: "أسوان", en: "Aswan" }, { ar: "بورسعيد", en: "Port Said" }, { ar: "الإسماعيلية", en: "Ismailia" },
-          { ar: "السويس", en: "Suez" }, { ar: "الأقصر", en: "Luxor" }, { ar: "قنا", en: "Qena" },
-          { ar: "المنيا", en: "Minya" }, { ar: "سوهاج", en: "Sohag" }, { ar: "الفيوم", en: "Faiyum" },
-          { ar: "بني سويف", en: "Beni Suef" }, { ar: "الزقازيق", en: "Zagazig" }, { ar: "دمياط", en: "Damietta" },
-          { ar: "شبين الكوم", en: "Shibin El Kom" }, { ar: "بنها", en: "Banha" }, { ar: "دمنهور", en: "Damanhour" },
-          { ar: "كفر الشيخ", en: "Kafr El Sheikh" }, { ar: "العريش", en: "Arish" }, { ar: "مرسى مطروح", en: "Mersa Matruh" },
-          { ar: "الغردقة", en: "Hurghada" }, { ar: "شرم الشيخ", en: "Sharm El Sheikh" }, { ar: "الخارجة", en: "Kharga" }
+          { ar: "الدقهلية (المنصورة)", en: "Mansoura" }, { ar: "البحر الأحمر (الغردقة)", en: "Hurghada" },
+          { ar: "البحيرة (دمنهور)", en: "Damanhour" }, { ar: "الفيوم", en: "Faiyum" }, { ar: "الغربية (طنطا)", en: "Tanta" },
+          { ar: "الإسماعيلية", en: "Ismailia" }, { ar: "المنوفية (شبين الكوم)", en: "Shibin El Kom" },
+          { ar: "المنيا", en: "Minya" }, { ar: "القليوبية (بنها)", en: "Banha" }, { ar: "الوادي الجديد (الخارجة)", en: "Kharga" },
+          { ar: "الشرقية (الزقازيق)", en: "Zagazig" }, { ar: "السويس", en: "Suez" }, { ar: "أسوان", en: "Aswan" },
+          { ar: "أسيوط", en: "Asyut" }, { ar: "بني سويف", en: "Beni Suef" }, { ar: "بورسعيد", en: "Port Said" },
+          { ar: "دمياط", en: "Damietta" }, { ar: "الأقصر", en: "Luxor" }, { ar: "مطروح", en: "Mersa Matruh" },
+          { ar: "قنا", en: "Qena" }, { ar: "شمال سيناء (العريش)", en: "Arish" }, { ar: "سوهاج", en: "Sohag" },
+          { ar: "جنوب سيناء (الطور)", en: "El Tor" }, { ar: "كفر الشيخ", en: "Kafr El Sheikh" }
         ]
       },
       { country: "السعودية", enCountry: "Saudi Arabia", method: 4, cities: [
           { ar: "مكة المكرمة", en: "Makkah" }, { ar: "المدينة المنورة", en: "Madinah" },
-          { ar: "الرياض", en: "Riyadh" }, { ar: "جدة", en: "Jeddah" }, { ar: "الدمام", en: "Dammam" },
-          { ar: "أبها", en: "Abha" }, { ar: "تبوك", en: "Tabuk" }, { ar: "بريدة", en: "Buraidah" }
+          { ar: "الرياض", en: "Riyadh" }, { ar: "جدة", en: "Jeddah" }, { ar: "الدمام", en: "Dammam" }
         ]
       },
       { country: "الإمارات", enCountry: "United Arab Emirates", method: 4, cities: [
