@@ -1,1 +1,17 @@
 
+{
+  "name": "رفيق المسلم - التطبيق الشامل",
+  "short_name": "رفيق المسلم",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#2c3e50",
+  "description": "تطبيق رفيق المسلم الإسلامي الشامل لأداء العبادات والأذكار بكل سهولة",
+  "icons": [
+    {
+      "src": "icon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
