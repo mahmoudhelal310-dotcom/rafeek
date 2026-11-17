@@ -421,20 +421,23 @@
     <button class="back-home-btn" onclick="goHome()">⬅ العودة للرئيسية</button>
     <div style="background:var(--card-bg); padding:18px; border-radius:16px; border:1px solid var(--border);">
       <h2 style="color:var(--primary); margin-bottom:4px; text-align:center;">🎙️ الابتهالات والتواشيح الدينية</h2>
-      <p style="font-size:0.86rem; color:var(--text-muted); text-align:center; margin-bottom:14px;">اختر الابتهال لتشغيله في الشاشة المصغرة</p>
+      <p style="font-size:0.86rem; color:var(--text-muted); text-align:center; margin-bottom:14px;">قائمة ابتهالات الشيخ سيد النقشبندي — تعمل في الشاشة المصغرة</p>
 
-      <div class="ibtihal-player-wrapper" id="ibtihalPlayerWrapper" style="display:none;">
-        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
-          <span id="currentIbtihalTitle" style="font-weight:700; font-size:0.88rem; color:var(--primary);">--</span>
-          <button class="icon-btn" onclick="stopIbtihalVideo()" title="إغلاق المشغل" style="width:28px; height:28px; font-size:0.9rem; background:var(--accent-soft); color:var(--text); border-color:var(--accent);">&times;</button>
+      <div class="ibtihal-player-wrapper" id="ibtihalPlayerWrapper">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; gap:8px;">
+          <span id="currentIbtihalTitle" style="font-weight:700; font-size:0.86rem; color:var(--primary);">🎬 قائمة ابتهالات الشيخ سيد النقشبندي</span>
+          <a href="https://youtube.com/playlist?list=PL_SogsvUA1JjSOsjz2XJIxbDzLXTu4IpA" target="_blank" rel="noopener noreferrer" class="tafsir-tool-btn" style="text-decoration:none; white-space:nowrap;">فتح في يوتيوب ↗</a>
         </div>
         <div class="ibtihal-video-frame">
-          <iframe id="ibtihalYoutubeFrame" src="" title="مشغل الابتهالات" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          <iframe id="ibtihalYoutubeFrame" src="" title="مشغل الابتهالات" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+        <div style="font-size:0.78rem; color:var(--text-muted); text-align:center; margin-top:8px;">
+          💡 يمكنك التنقل بين جميع ابتهالات القائمة من زر القائمة (☰) أعلى يمين الفيديو أو أزرار التالي والسابق داخل المشغل.
         </div>
       </div>
 
       <div style="margin-bottom:12px;">
-        <input type="text" id="ibtihalSearchInput" oninput="renderIbtihalat()" placeholder="ابحث باسم الابتهال أو المبتهل..." style="width:100%; padding:10px; border-radius:8px; border:1px solid var(--border); background:var(--bg); color:var(--text);">
+        <input type="text" id="ibtihalSearchInput" oninput="renderIbtihalat()" placeholder="ابحث باسم الابتهال..." style="width:100%; padding:10px; border-radius:8px; border:1px solid var(--border); background:var(--bg); color:var(--text);">
       </div>
 
       <div id="ibtihalatContainer"></div>
@@ -2017,25 +2020,27 @@ ${currentTafsirTextForShare}`
       if (sectionId === 'quranSection') renderSurahs();
       if (sectionId === 'azkarSection') loadAzkarCategory('morning');
       if (sectionId === 'hadithSection') renderHadiths();
-      if (sectionId === 'ibtihalatSection') renderIbtihalat();
+      if (sectionId === 'ibtihalatSection') { renderIbtihalat(); playIbtihalFromPlaylist(0, 'قائمة ابتهالات الشيخ سيد النقشبندي', 'الشيخ سيد النقشبندي', 0); }
     }
 
 
-    // قائمة الابتهالات الدينية (تشغيل عبر YouTube Embed في شاشة مصغرة)
+    // قائمة تشغيل ابتهالات الشيخ سيد النقشبندي من يوتيوب
+    const IBTIHALAT_PLAYLIST_ID = "PL_SogsvUA1JjSOsjz2XJIxbDzLXTu4IpA";
     const ibtihalatList = [
-      { title: "مولاي إني ببابك قد بسطت يدي", reciter: "الشيخ سيد النقشبندي", videoId: "68M3A5721nM" },
-      { title: "يا من إذا سألت عنه وجدته (أغيب وذو اللطائف لا يغيب)", reciter: "الشيخ سيد النقشبندي", videoId: "4vT6d9b3vA4" },
-      { title: "إلهي لا تعذبني فإني مقر بالذي قد كان مني", reciter: "الشيخ سيد النقشبندي", videoId: "9zQ8w5L3xM0" },
-      { title: "نفس يا نفس توبي", reciter: "الشيخ سيد النقشبندي", videoId: "2pY7k9N4wR8" },
-      { title: "يا رب إن عظمت ذنوبي كثرة", reciter: "الشيخ نصر الدين طوبار", videoId: "5mK8j2P1vL4" },
-      { title: "جل المنادي", reciter: "الشيخ نصر الدين طوبار", videoId: "8xN4r7Q9wC2" },
-      { title: "يا سالكين إلى منى", reciter: "الشيخ نصر الدين طوبار", videoId: "3wL6t8M2vB9" },
-      { title: "سبحانك يا غافر الذنوب", reciter: "الشيخ نصر الدين طوبار", videoId: "7qR5n3K8xP1" },
-      { title: "يا رب يا عالم الحال", reciter: "الشيخ محمد عمران", videoId: "1kM9v4L7wZ6" },
-      { title: "أسماء الله الحسنى", reciter: "الشيخ سيد النقشبندي", videoId: "6tP2x8N5mQ3" }
+      { title: "تشغيل قائمة الابتهالات كاملة (متتابع)", reciter: "الشيخ سيد النقشبندي", index: 0 },
+      { title: "مولاي إني ببابك قد بسطت يدي", reciter: "الشيخ سيد النقشبندي", index: 0 },
+      { title: "أغيب وذو اللطائف لا يغيب", reciter: "الشيخ سيد النقشبندي", index: 1 },
+      { title: "إلهي لا تعذبني فإني مقر بالذي قد كان مني", reciter: "الشيخ سيد النقشبندي", index: 2 },
+      { title: "نفس يا نفس توبي", reciter: "الشيخ سيد النقشبندي", index: 3 },
+      { title: "يا رب إن عظمت ذنوبي كثرة", reciter: "الشيخ سيد النقشبندي", index: 4 },
+      { title: "أقول أمتي", reciter: "الشيخ سيد النقشبندي", index: 5 },
+      { title: "أي سلوى وعزاء", reciter: "الشيخ سيد النقشبندي", index: 6 },
+      { title: "يا نور كل شيء وهداه", reciter: "الشيخ سيد النقشبندي", index: 7 },
+      { title: "سبحانك ربي سبحانك", reciter: "الشيخ سيد النقشبندي", index: 8 },
+      { title: "جل الإله", reciter: "الشيخ سيد النقشبندي", index: 9 }
     ];
 
-    let activeIbtihalVideoId = "";
+    let activeIbtihalIdx = -1;
 
     function renderIbtihalat() {
       const container = document.getElementById("ibtihalatContainer");
@@ -2053,11 +2058,11 @@ ${currentTafsirTextForShare}`
         return;
       }
 
-      filtered.forEach(item => {
-        const isActive = activeIbtihalVideoId === item.videoId;
+      filtered.forEach((item, listIdx) => {
+        const isActive = activeIbtihalIdx === listIdx;
         const card = document.createElement("div");
         card.className = "ibtihal-card" + (isActive ? " active" : "");
-        card.onclick = () => playIbtihalVideo(item.videoId, item.title, item.reciter);
+        card.onclick = () => playIbtihalFromPlaylist(item.index, item.title, item.reciter, listIdx);
         card.innerHTML = `
           <div class="ibtihal-meta">
             <div class="ibtihal-title">${item.title}</div>
@@ -2069,32 +2074,26 @@ ${currentTafsirTextForShare}`
       });
     }
 
-    function playIbtihalVideo(videoId, title, reciter) {
-      // إيقاف أي صوتيات أخرى تعمل في الصفحة
+    function playIbtihalFromPlaylist(playlistIndex, title, reciter, listIdx = 0) {
       if (audioPlayer && !audioPlayer.paused) audioPlayer.pause();
       if (radioPlaying) toggleRadioPlay();
       stopAyahAudio();
 
-      activeIbtihalVideoId = videoId;
-      const wrapper = document.getElementById("ibtihalPlayerWrapper");
+      activeIbtihalIdx = listIdx;
       const iframe = document.getElementById("ibtihalYoutubeFrame");
       const titleEl = document.getElementById("currentIbtihalTitle");
 
-      if (titleEl) titleEl.innerText = `🎬 ${title} — ${reciter}`;
-      if (iframe) iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`;
-      if (wrapper) {
-        wrapper.style.display = "block";
-        wrapper.scrollIntoView({ behavior: "smooth", block: "nearest" });
+      if (titleEl) titleEl.innerText = `🎬 ${title}`;
+      if (iframe) {
+        iframe.src = `https://www.youtube.com/embed/videoseries?list=${IBTIHALAT_PLAYLIST_ID}&index=${playlistIndex}&autoplay=1&rel=0`;
       }
       renderIbtihalat();
     }
 
     function stopIbtihalVideo() {
-      activeIbtihalVideoId = "";
-      const wrapper = document.getElementById("ibtihalPlayerWrapper");
+      activeIbtihalIdx = -1;
       const iframe = document.getElementById("ibtihalYoutubeFrame");
       if (iframe) iframe.src = "";
-      if (wrapper) wrapper.style.display = "none";
       renderIbtihalat();
     }
 
