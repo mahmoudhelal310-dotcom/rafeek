@@ -411,7 +411,11 @@
         <option value="roqiah">🛡️ إذاعة الرقية الشرعية</option>
       </select>
       <button class="btn btn-play" id="radioPlayBtn" onclick="toggleRadioPlay()" style="width:100%; padding:14px; border-radius:12px; font-size:1.05rem;">▶️ تشغيل الإذاعة</button>
-      <div id="radioStatusText" style="font-size:0.8rem; color:var(--text-muted); margin-top:8px; display:none;"></div>
+      <div id="radioStatusText" style="font-size:0.82rem; color:var(--text-muted); margin-top:8px; display:none;"></div>
+      <div id="inAppBrowserNotice" style="display:none; margin-top:12px; padding:12px; border-radius:12px; background:var(--accent-soft); border:1px dashed var(--accent); font-size:0.84rem; line-height:1.7; color:var(--text);">
+        ⚠️ أنت تفتح الموقع الآن من متصفح فيسبوك الداخلي، والذي قد يمنع البث المباشر أو يوقفه عند غلق الشاشة.<br>
+        <button type="button" onclick="openInExternalBrowser()" class="btn btn-read" style="margin-top:8px; width:100%; padding:10px; border:1px solid var(--accent);">🌐 فتح في متصفح الهاتف (Chrome)</button>
+      </div>
       <audio id="liveRadioAudio" preload="none" playsinline></audio>
     </div>
   </div>
@@ -1977,15 +1981,41 @@ ${currentTafsirTextForShare}`
       } catch (e) { resultsContainer.innerHTML = '<div>خطأ في الاتصال.</div>'; }
     }
 
-    // حذف الإذاعة المكررة والإبقاء على المحطات المميزة فقط
+    // روابط البث المباشر مع سيرفرات MP3 بديلة تعمل بكفاءة حتى داخل متصفحات التطبيقات
     const radioStationsMap = {
-      cairo: ["https://stream.radiojar.com/8s5u5tpdtwzuv", "https://n03.radiojar.com/8s5u5tpdtwzuv"],
-      tarateel: ["https://backup.qurango.net/radio/tarateel"],
-      roqiah: ["https://backup.qurango.net/radio/roqiah"]
+      cairo: [
+        "https://stream.radiojar.com/8s5u5tpdtwzuv",
+        "https://n03.radiojar.com/8s5u5tpdtwzuv",
+        "https://n0a.radiojar.com/8s5u5tpdtwzuv",
+        "https://backup.qurango.net/radio/mix"
+      ],
+      tarateel: [
+        "https://backup.qurango.net/radio/tarateel"
+      ],
+      roqiah: [
+        "https://backup.qurango.net/radio/roqiah"
+      ]
     };
 
     let currentStationKey = "cairo";
     let currentStreamAttempt = 0;
+
+    function isInAppBrowser() {
+      const ua = navigator.userAgent || navigator.vendor || window.opera || "";
+      return /FBAN|FBAV|FB_IAB|Instagram|Messenger|Line|Snapchat/i.test(ua);
+    }
+
+    function openInExternalBrowser() {
+      const currentUrl = window.location.href;
+      const isAndroid = /Android/i.test(navigator.userAgent || "");
+      if (isAndroid) {
+        const cleanUrl = currentUrl.replace(/^https?:\/\//, "");
+        window.location.href = `intent://${cleanUrl}#Intent;scheme=https;package=com.android.chrome;end`;
+      } else {
+        window.open(currentUrl, "_blank");
+        alert("اضغط على النقاط الثلاث (•••) في الأعلى ثم اختر 'فتح في المتصفح' (Open in Browser).");
+      }
+    }
 
     function changeRadioStation() {
       currentStationKey = document.getElementById("radioStationSelect").value;
@@ -1995,6 +2025,12 @@ ${currentTafsirTextForShare}`
 
     function startPlayingCurrentStation() {
       const streams = radioStationsMap[currentStationKey] || radioStationsMap.cairo;
+      const statusText = document.getElementById("radioStatusText");
+      if (statusText) {
+        statusText.style.display = "block";
+        statusText.innerText = "⏳ جاري الاتصال بالبث المباشر...";
+      }
+
       liveRadioAudio.src = streams[currentStreamAttempt % streams.length];
       liveRadioAudio.load();
       liveRadioAudio.play().then(() => {
@@ -2002,10 +2038,26 @@ ${currentTafsirTextForShare}`
         radioPlayBtn.innerHTML = "⏸️ إيقاف الإذاعة";
         radioPlayBtn.style.background = "#e74c3c";
         radioPlayBtn.style.color = "#fff";
+        if (statusText) statusText.innerText = "🔴 البث المباشر يعمل الآن";
       }).catch(() => {
         currentStreamAttempt++;
-        if (currentStreamAttempt < streams.length) { startPlayingCurrentStation(); }
-        else { alert("تعذر تشغيل الإذاعة حالياً."); radioPlaying = false; }
+        if (currentStreamAttempt < streams.length) {
+          startPlayingCurrentStation();
+        } else {
+          radioPlaying = false;
+          radioPlayBtn.innerHTML = "▶️ تشغيل الإذاعة";
+          radioPlayBtn.style.background = "var(--primary)";
+          radioPlayBtn.style.color = "#fff";
+          if (statusText) {
+            statusText.innerText = "⚠️ تعذر تشغيل البث داخل هذا المتصفح.";
+          }
+          if (isInAppBrowser()) {
+            const notice = document.getElementById("inAppBrowserNotice");
+            if (notice) notice.style.display = "block";
+          } else {
+            alert("تعذر تشغيل الإذاعة حالياً، يرجى المحاولة مرة أخرى.");
+          }
+        }
       });
     }
 
@@ -2013,6 +2065,7 @@ ${currentTafsirTextForShare}`
       if (!radioPlaying) {
         audioPlayer.pause();
         stopAyahAudio();
+        currentStreamAttempt = 0;
         startPlayingCurrentStation();
       } else {
         liveRadioAudio.pause();
@@ -2020,6 +2073,8 @@ ${currentTafsirTextForShare}`
         radioPlayBtn.style.background = "var(--primary)";
         radioPlayBtn.style.color = "#fff";
         radioPlaying = false;
+        const statusText = document.getElementById("radioStatusText");
+        if (statusText) statusText.style.display = "none";
       }
     }
 
@@ -2031,6 +2086,7 @@ ${currentTafsirTextForShare}`
       if (sectionId === 'azkarSection') loadAzkarCategory('morning');
       if (sectionId === 'hadithSection') renderHadiths();
       if (sectionId === 'ibtihalatSection') { renderIbtihalat(); playIbtihalVideo('3X-V8y3aRHg', 'مولاي إني ببابك قد بسطت يدي', 'الشيخ سيد النقشبندي'); }
+      if (sectionId === 'radioSection' && isInAppBrowser()) { const n = document.getElementById('inAppBrowserNotice'); if (n) n.style.display = 'block'; }
     }
 
 
