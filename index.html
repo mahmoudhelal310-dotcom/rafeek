@@ -425,8 +425,7 @@
 
       <div class="ibtihal-player-wrapper" id="ibtihalPlayerWrapper">
         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; gap:8px;">
-          <span id="currentIbtihalTitle" style="font-weight:700; font-size:0.86rem; color:var(--primary);">🎬 قائمة ابتهالات الشيخ سيد النقشبندي</span>
-          <a href="https://youtube.com/playlist?list=PL_SogsvUA1JjSOsjz2XJIxbDzLXTu4IpA" target="_blank" rel="noopener noreferrer" class="tafsir-tool-btn" style="text-decoration:none; white-space:nowrap;">فتح في يوتيوب ↗</a>
+          <span id="currentIbtihalTitle" style="font-weight:700; font-size:0.88rem; color:var(--primary);">🎬 قائمة ابتهالات الشيخ سيد النقشبندي</span>
         </div>
         <div class="ibtihal-video-frame">
           <iframe id="ibtihalYoutubeFrame" src="" title="مشغل الابتهالات" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
@@ -2027,17 +2026,16 @@ ${currentTafsirTextForShare}`
     // قائمة تشغيل ابتهالات الشيخ سيد النقشبندي من يوتيوب
     const IBTIHALAT_PLAYLIST_ID = "PL_SogsvUA1JjSOsjz2XJIxbDzLXTu4IpA";
     const ibtihalatList = [
-      { title: "تشغيل قائمة الابتهالات كاملة (متتابع)", reciter: "الشيخ سيد النقشبندي", index: 0 },
-      { title: "مولاي إني ببابك قد بسطت يدي", reciter: "الشيخ سيد النقشبندي", index: 0 },
-      { title: "أغيب وذو اللطائف لا يغيب", reciter: "الشيخ سيد النقشبندي", index: 1 },
-      { title: "إلهي لا تعذبني فإني مقر بالذي قد كان مني", reciter: "الشيخ سيد النقشبندي", index: 2 },
-      { title: "نفس يا نفس توبي", reciter: "الشيخ سيد النقشبندي", index: 3 },
-      { title: "يا رب إن عظمت ذنوبي كثرة", reciter: "الشيخ سيد النقشبندي", index: 4 },
-      { title: "أقول أمتي", reciter: "الشيخ سيد النقشبندي", index: 5 },
-      { title: "أي سلوى وعزاء", reciter: "الشيخ سيد النقشبندي", index: 6 },
-      { title: "يا نور كل شيء وهداه", reciter: "الشيخ سيد النقشبندي", index: 7 },
-      { title: "سبحانك ربي سبحانك", reciter: "الشيخ سيد النقشبندي", index: 8 },
-      { title: "جل الإله", reciter: "الشيخ سيد النقشبندي", index: 9 }
+      { title: "الابتهال الأول في القائمة", reciter: "الشيخ سيد النقشبندي", index: 0 },
+      { title: "الابتهال الثاني في القائمة", reciter: "الشيخ سيد النقشبندي", index: 1 },
+      { title: "الابتهال الثالث في القائمة", reciter: "الشيخ سيد النقشبندي", index: 2 },
+      { title: "الابتهال الرابع في القائمة", reciter: "الشيخ سيد النقشبندي", index: 3 },
+      { title: "الابتهال الخامس في القائمة", reciter: "الشيخ سيد النقشبندي", index: 4 },
+      { title: "الابتهال السادس في القائمة", reciter: "الشيخ سيد النقشبندي", index: 5 },
+      { title: "الابتهال السابع في القائمة", reciter: "الشيخ سيد النقشبندي", index: 6 },
+      { title: "الابتهال الثامن في القائمة", reciter: "الشيخ سيد النقشبندي", index: 7 },
+      { title: "الابتهال التاسع في القائمة", reciter: "الشيخ سيد النقشبندي", index: 8 },
+      { title: "الابتهال العاشر في القائمة", reciter: "الشيخ سيد النقشبندي", index: 9 }
     ];
 
     let activeIbtihalIdx = -1;
@@ -2085,7 +2083,8 @@ ${currentTafsirTextForShare}`
 
       if (titleEl) titleEl.innerText = `🎬 ${title}`;
       if (iframe) {
-        iframe.src = `https://www.youtube.com/embed/videoseries?list=${IBTIHALAT_PLAYLIST_ID}&index=${playlistIndex}&autoplay=1&rel=0`;
+        const ytOneBasedIndex = playlistIndex + 1;
+        iframe.src = `https://www.youtube.com/embed?listType=playlist&list=${IBTIHALAT_PLAYLIST_ID}&index=${ytOneBasedIndex}&autoplay=1&rel=0`;
       }
       renderIbtihalat();
     }
