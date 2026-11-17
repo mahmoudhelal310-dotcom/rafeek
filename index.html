@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <title>رفيق المسلم | تلاوات، قراءة، أذكار، وأحاديث نبوية</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
   <link rel="icon" href="favicon.png" type="image/png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -485,7 +486,7 @@
       </div>
       <iframe id="munshidFrame" title="مشغل الابتهالات" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="width:100%; aspect-ratio:16/9; border:0; border-radius:12px; background:#000;"></iframe>
       <div id="ibtSources" style="display:flex; flex-direction:column; gap:6px; margin-top:10px;"></div>
-      <a id="ibtYoutubeLink" href="#" target="_blank" rel="noopener noreferrer" style="display:block; text-align:center; margin-top:10px; font-size:0.82rem; font-weight:700; color:var(--primary);">▶ لو الفيديو لا يعمل هنا، افتحه في يوتيوب</a>
+      <a id="ibtYoutubeLink" href="#" target="_blank" rel="noopener noreferrer" class="btn btn-play" style="display:flex; width:100%; margin-top:10px; padding:12px; font-size:0.95rem; text-decoration:none;">▶ افتح في يوتيوب (لو ظهر خطأ 153 اضغط هنا)</a>
     </div>
   </div>
 
@@ -1569,5 +1570,3 @@
     }
 
     function openAyahPlayOptions(surahId, ayahNumInSurah, globalAyahNum, btnEl) {
-      if (!singleAyahAudio) {
-        singleAyahAudio = document.getElement
