@@ -1982,12 +1982,12 @@ ${currentTafsirTextForShare}`
     }
 
     // روابط البث المباشر الرسمية والمستقرة لإذاعة القرآن الكريم من القاهرة (متوافقة تماماً مع فيسبوك وجميع المتصفحات)
-    const radioStationsMap = {
+        const radioStationsMap = {
       cairo: [
-        "https://n03.radiojar.com/8s5u5tpdtwzuv",
-        "https://stream.radiojar.com/8s5u5tpdtwzuv",
-        "https://radio.garden/api/ara/content/listen/92q47L8X/channel.mp3",
-        "https://live.radiojar.com/8s5u5tpdtwzuv"
+        "https://stream.radiojar.com/8s5u5tpdtwzuv", // رابط ماسبيرو / راديو جار الرسمي
+        "https://n03.radiojar.com/8s5u5tpdtwzuv",     // سيرفر ماسبيرو التبادلي
+        "https://live.radiojar.com/8s5u5tpdtwzuv",    // سيرفر البث الحي المباشر
+        "https://radio.garden/api/ara/content/listen/92q47L8X/channel.mp3" // راديو جاردن مصر
       ],
       tarateel: [
         "https://backup.qurango.net/radio/tarateel"
@@ -1996,6 +1996,7 @@ ${currentTafsirTextForShare}`
         "https://backup.qurango.net/radio/roqiah"
       ]
     };
+
 
     let currentStationKey = "cairo";
     let currentStreamAttempt = 0;
