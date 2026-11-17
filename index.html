@@ -421,21 +421,25 @@
     <button class="back-home-btn" onclick="goHome()">⬅ العودة للرئيسية</button>
     <div style="background:var(--card-bg); padding:18px; border-radius:16px; border:1px solid var(--border);">
       <h2 style="color:var(--primary); margin-bottom:4px; text-align:center;">🎙️ الابتهالات والتواشيح الدينية</h2>
-      <p style="font-size:0.86rem; color:var(--text-muted); text-align:center; margin-bottom:14px;">قائمة ابتهالات الشيخ سيد النقشبندي — تعمل في الشاشة المصغرة</p>
+      <p style="font-size:0.86rem; color:var(--text-muted); text-align:center; margin-bottom:14px;">باقة من أروع ابتهالات كبار المبتهلين — تعمل في الشاشة المصغرة</p>
 
       <div class="ibtihal-player-wrapper" id="ibtihalPlayerWrapper">
         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; gap:8px;">
-          <span id="currentIbtihalTitle" style="font-weight:700; font-size:0.88rem; color:var(--primary);">🎬 قائمة ابتهالات الشيخ سيد النقشبندي</span>
+          <span id="currentIbtihalTitle" style="font-weight:700; font-size:0.88rem; color:var(--primary);">🎬 مولاي إني ببابك قد بسطت يدي — الشيخ سيد النقشبندي</span>
         </div>
         <div class="ibtihal-video-frame">
           <iframe id="ibtihalYoutubeFrame" src="" title="مشغل الابتهالات" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
         </div>
-        <div style="font-size:0.78rem; color:var(--text-muted); text-align:center; margin-top:8px;">
-          💡 يمكنك التنقل بين جميع ابتهالات القائمة من زر القائمة (☰) أعلى يمين الفيديو أو أزرار التالي والسابق داخل المشغل.
-        </div>
       </div>
 
-      <div style="margin-bottom:12px;">
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:12px;">
+        <select id="ibtihalReciterFilter" onchange="renderIbtihalat()" style="width:100%; padding:10px; border-radius:8px; border:1px solid var(--border); background:var(--bg); color:var(--text); font-weight:700;">
+          <option value="all">🎙️ كل المبتهلين</option>
+          <option value="الشيخ سيد النقشبندي">الشيخ سيد النقشبندي</option>
+          <option value="الشيخ نصر الدين طوبار">الشيخ نصر الدين طوبار</option>
+          <option value="الشيخ محمد عمران">الشيخ محمد عمران</option>
+          <option value="الشيخ طه الفشني">الشيخ طه الفشني</option>
+        </select>
         <input type="text" id="ibtihalSearchInput" oninput="renderIbtihalat()" placeholder="ابحث باسم الابتهال..." style="width:100%; padding:10px; border-radius:8px; border:1px solid var(--border); background:var(--bg); color:var(--text);">
       </div>
 
@@ -2019,48 +2023,55 @@ ${currentTafsirTextForShare}`
       if (sectionId === 'quranSection') renderSurahs();
       if (sectionId === 'azkarSection') loadAzkarCategory('morning');
       if (sectionId === 'hadithSection') renderHadiths();
-      if (sectionId === 'ibtihalatSection') { renderIbtihalat(); playIbtihalFromPlaylist(0, 'قائمة ابتهالات الشيخ سيد النقشبندي', 'الشيخ سيد النقشبندي', 0); }
+      if (sectionId === 'ibtihalatSection') { renderIbtihalat(); playIbtihalVideo('3X-V8y3aRHg', 'مولاي إني ببابك قد بسطت يدي', 'الشيخ سيد النقشبندي'); }
     }
 
 
-    // قائمة تشغيل ابتهالات الشيخ سيد النقشبندي من يوتيوب
-    const IBTIHALAT_PLAYLIST_ID = "PL_SogsvUA1JjSOsjz2XJIxbDzLXTu4IpA";
+    // باقة ابتهالات مختارة بأسمائها الحقيقية لكبار المبتهلين
     const ibtihalatList = [
-      { title: "الابتهال الأول في القائمة", reciter: "الشيخ سيد النقشبندي", index: 0 },
-      { title: "الابتهال الثاني في القائمة", reciter: "الشيخ سيد النقشبندي", index: 1 },
-      { title: "الابتهال الثالث في القائمة", reciter: "الشيخ سيد النقشبندي", index: 2 },
-      { title: "الابتهال الرابع في القائمة", reciter: "الشيخ سيد النقشبندي", index: 3 },
-      { title: "الابتهال الخامس في القائمة", reciter: "الشيخ سيد النقشبندي", index: 4 },
-      { title: "الابتهال السادس في القائمة", reciter: "الشيخ سيد النقشبندي", index: 5 },
-      { title: "الابتهال السابع في القائمة", reciter: "الشيخ سيد النقشبندي", index: 6 },
-      { title: "الابتهال الثامن في القائمة", reciter: "الشيخ سيد النقشبندي", index: 7 },
-      { title: "الابتهال التاسع في القائمة", reciter: "الشيخ سيد النقشبندي", index: 8 },
-      { title: "الابتهال العاشر في القائمة", reciter: "الشيخ سيد النقشبندي", index: 9 }
+      { title: "مولاي إني ببابك قد بسطت يدي", reciter: "الشيخ سيد النقشبندي", videoId: "3X-V8y3aRHg" },
+      { title: "أغيب وذو اللطائف لا يغيب", reciter: "الشيخ سيد النقشبندي", videoId: "nT03fBhHJQQ" },
+      { title: "إلهي لا تعذبني فإني مقر بالذي قد كان مني", reciter: "الشيخ سيد النقشبندي", videoId: "q7pLnc7c6Wk" },
+      { title: "يا نور كل شيء وهداه", reciter: "الشيخ سيد النقشبندي", videoId: "J1qoEr3_Cgc" },
+      { title: "أقول أمتي يا رب أمتي", reciter: "الشيخ سيد النقشبندي", videoId: "b0blUIPfucQ" },
+      { title: "أي سلوى وعزاء", reciter: "الشيخ سيد النقشبندي", videoId: "iT894fjdl0c" },
+      { title: "يا من آمنت يونس في بطن الحوت", reciter: "الشيخ نصر الدين طوبار", videoId: "9i8YOym95wo" },
+      { title: "جل المنادي ينادي", reciter: "الشيخ نصر الدين طوبار", videoId: "cfYYSPyXzvQ" },
+      { title: "سبحت لله في العش الطيور", reciter: "الشيخ نصر الدين طوبار", videoId: "AZAg-OLbPiw" },
+      { title: "سال دمعي يا إلهي وليل طويل", reciter: "الشيخ نصر الدين طوبار", videoId: "vqG5QjaI0pI" },
+      { title: "يا بارئ الكون في عز وتمكين", reciter: "الشيخ نصر الدين طوبار", videoId: "tOT98qSz-HU" },
+      { title: "قصدت باب الرجا والناس قد رقدوا", reciter: "الشيخ محمد عمران", videoId: "k8-qNy9dAe8" },
+      { title: "سيدي يا رسول الله (مسجد السيدة نفيسة)", reciter: "الشيخ محمد عمران", videoId: "piJBM2iIJq8" },
+      { title: "يا أيها المختار من خير الورى", reciter: "الشيخ طه الفشني", videoId: "QYBmfS3sDF8" }
     ];
 
-    let activeIbtihalIdx = -1;
+    let activeIbtihalVideoId = "";
 
     function renderIbtihalat() {
       const container = document.getElementById("ibtihalatContainer");
       const filterEl = document.getElementById("ibtihalSearchInput");
+      const reciterFilterEl = document.getElementById("ibtihalReciterFilter");
       if (!container) return;
       const filter = filterEl ? filterEl.value.trim() : "";
+      const selectedReciter = reciterFilterEl ? reciterFilterEl.value : "all";
       container.innerHTML = "";
 
-      const filtered = ibtihalatList.filter(item =>
-        item.title.includes(filter) || item.reciter.includes(filter)
-      );
+      const filtered = ibtihalatList.filter(item => {
+        const matchesReciter = selectedReciter === "all" || item.reciter === selectedReciter;
+        const matchesText = item.title.includes(filter) || item.reciter.includes(filter);
+        return matchesReciter && matchesText;
+      });
 
       if (filtered.length === 0) {
         container.innerHTML = '<div style="text-align:center; color:var(--text-muted); padding:20px;">لا توجد ابتهالات مطابقة للبحث.</div>';
         return;
       }
 
-      filtered.forEach((item, listIdx) => {
-        const isActive = activeIbtihalIdx === listIdx;
+      filtered.forEach(item => {
+        const isActive = activeIbtihalVideoId === item.videoId;
         const card = document.createElement("div");
         card.className = "ibtihal-card" + (isActive ? " active" : "");
-        card.onclick = () => playIbtihalFromPlaylist(item.index, item.title, item.reciter, listIdx);
+        card.onclick = () => playIbtihalVideo(item.videoId, item.title, item.reciter);
         card.innerHTML = `
           <div class="ibtihal-meta">
             <div class="ibtihal-title">${item.title}</div>
@@ -2072,25 +2083,24 @@ ${currentTafsirTextForShare}`
       });
     }
 
-    function playIbtihalFromPlaylist(playlistIndex, title, reciter, listIdx = 0) {
+    function playIbtihalVideo(videoId, title, reciter) {
       if (audioPlayer && !audioPlayer.paused) audioPlayer.pause();
       if (radioPlaying) toggleRadioPlay();
       stopAyahAudio();
 
-      activeIbtihalIdx = listIdx;
+      activeIbtihalVideoId = videoId;
       const iframe = document.getElementById("ibtihalYoutubeFrame");
       const titleEl = document.getElementById("currentIbtihalTitle");
 
-      if (titleEl) titleEl.innerText = `🎬 ${title}`;
+      if (titleEl) titleEl.innerText = `🎬 ${title} — ${reciter}`;
       if (iframe) {
-        const ytOneBasedIndex = playlistIndex + 1;
-        iframe.src = `https://www.youtube.com/embed?listType=playlist&list=${IBTIHALAT_PLAYLIST_ID}&index=${ytOneBasedIndex}&autoplay=1&rel=0`;
+        iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`;
       }
       renderIbtihalat();
     }
 
     function stopIbtihalVideo() {
-      activeIbtihalIdx = -1;
+      activeIbtihalVideoId = "";
       const iframe = document.getElementById("ibtihalYoutubeFrame");
       if (iframe) iframe.src = "";
       renderIbtihalat();
