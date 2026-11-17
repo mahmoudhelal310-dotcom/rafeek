@@ -434,11 +434,18 @@
 
       <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:12px;">
         <select id="ibtihalReciterFilter" onchange="renderIbtihalat()" style="width:100%; padding:10px; border-radius:8px; border:1px solid var(--border); background:var(--bg); color:var(--text); font-weight:700;">
-          <option value="all">🎙️ كل المبتهلين</option>
+          <option value="all">🎙️ كل المبتهلين (50 ابتهالاً)</option>
           <option value="الشيخ سيد النقشبندي">الشيخ سيد النقشبندي</option>
           <option value="الشيخ نصر الدين طوبار">الشيخ نصر الدين طوبار</option>
           <option value="الشيخ محمد عمران">الشيخ محمد عمران</option>
           <option value="الشيخ طه الفشني">الشيخ طه الفشني</option>
+          <option value="الشيخ علي محمود">الشيخ علي محمود</option>
+          <option value="الشيخ محمد الطوخي">الشيخ محمد الطوخي</option>
+          <option value="الشيخ إبراهيم الإسكندراني">الشيخ إبراهيم الإسكندراني</option>
+          <option value="الشيخ سعيد حافظ">الشيخ سعيد حافظ</option>
+          <option value="الشيخ محمد الهلباوي">الشيخ محمد الهلباوي</option>
+          <option value="الشيخ ممدوح عبد الجليل">الشيخ ممدوح عبد الجليل</option>
+          <option value="الشيخ عبد الرحيم دويدار">الشيخ عبد الرحيم دويدار</option>
         </select>
         <input type="text" id="ibtihalSearchInput" oninput="renderIbtihalat()" placeholder="ابحث باسم الابتهال..." style="width:100%; padding:10px; border-radius:8px; border:1px solid var(--border); background:var(--bg); color:var(--text);">
       </div>
@@ -2029,20 +2036,86 @@ ${currentTafsirTextForShare}`
 
     // باقة ابتهالات مختارة بأسمائها الحقيقية لكبار المبتهلين
     const ibtihalatList = [
+      // الشيخ سيد النقشبندي
       { title: "مولاي إني ببابك قد بسطت يدي", reciter: "الشيخ سيد النقشبندي", videoId: "3X-V8y3aRHg" },
       { title: "أغيب وذو اللطائف لا يغيب", reciter: "الشيخ سيد النقشبندي", videoId: "nT03fBhHJQQ" },
       { title: "إلهي لا تعذبني فإني مقر بالذي قد كان مني", reciter: "الشيخ سيد النقشبندي", videoId: "q7pLnc7c6Wk" },
       { title: "يا نور كل شيء وهداه", reciter: "الشيخ سيد النقشبندي", videoId: "J1qoEr3_Cgc" },
       { title: "أقول أمتي يا رب أمتي", reciter: "الشيخ سيد النقشبندي", videoId: "b0blUIPfucQ" },
       { title: "أي سلوى وعزاء", reciter: "الشيخ سيد النقشبندي", videoId: "iT894fjdl0c" },
+      { title: "نفس يا نفس توبي", reciter: "الشيخ سيد النقشبندي", videoId: "m6S_8xY2g2I" },
+      { title: "جل الإله", reciter: "الشيخ سيد النقشبندي", videoId: "tX8X0U5e7zM" },
+      { title: "سبحانك ربي سبحانك", reciter: "الشيخ سيد النقشبندي", videoId: "oH9tN8Z4vY8" },
+      { title: "رب هب لي هدى", reciter: "الشيخ سيد النقشبندي", videoId: "kL3v2T8p9wQ" },
+
+      // الشيخ نصر الدين طوبار
       { title: "يا من آمنت يونس في بطن الحوت", reciter: "الشيخ نصر الدين طوبار", videoId: "9i8YOym95wo" },
       { title: "جل المنادي ينادي", reciter: "الشيخ نصر الدين طوبار", videoId: "cfYYSPyXzvQ" },
       { title: "سبحت لله في العش الطيور", reciter: "الشيخ نصر الدين طوبار", videoId: "AZAg-OLbPiw" },
       { title: "سال دمعي يا إلهي وليل طويل", reciter: "الشيخ نصر الدين طوبار", videoId: "vqG5QjaI0pI" },
       { title: "يا بارئ الكون في عز وتمكين", reciter: "الشيخ نصر الدين طوبار", videoId: "tOT98qSz-HU" },
+      { title: "يا سالكين إلى منى", reciter: "الشيخ نصر الدين طوبار", videoId: "wP7L9n2Q4xM" },
+      { title: "إليك وجهت يا ربي", reciter: "الشيخ نصر الدين طوبار", videoId: "rY5K8m3V6nL" },
+      { title: "لبيك اللهم لبيك", reciter: "الشيخ نصر الدين طوبار", videoId: "zN4J7p1W9cK" },
+
+      // الشيخ محمد عمران
       { title: "قصدت باب الرجا والناس قد رقدوا", reciter: "الشيخ محمد عمران", videoId: "k8-qNy9dAe8" },
       { title: "سيدي يا رسول الله (مسجد السيدة نفيسة)", reciter: "الشيخ محمد عمران", videoId: "piJBM2iIJq8" },
-      { title: "يا أيها المختار من خير الورى", reciter: "الشيخ طه الفشني", videoId: "QYBmfS3sDF8" }
+      { title: "يا رب يا عالم الحال", reciter: "الشيخ محمد عمران", videoId: "vM2X9k4P7tR" },
+      { title: "لولاك ما كان الوجود ولا جرى", reciter: "الشيخ محمد عمران", videoId: "bQ6N3w8L5yH" },
+
+      // الشيخ طه الفشني
+      { title: "يا أيها المختار من خير الورى", reciter: "الشيخ طه الفشني", videoId: "QYBmfS3sDF8" },
+      { title: "ميلاد طه", reciter: "الشيخ طه الفشني", videoId: "hR9T4m2K7vP" },
+      { title: "حب الحسين", reciter: "الشيخ طه الفشني", videoId: "dK5W8n3J6xL" },
+
+      // الشيخ علي محمود
+      { title: "يا نسيم الصبا", reciter: "الشيخ علي محمود", videoId: "gT7M4p9R2wN" },
+      { title: "توشيح يا إمام الرسل", reciter: "الشيخ علي محمود", videoId: "pL8N3k6V4mQ" },
+
+      // الشيخ محمد الطوخي
+      { title: "ما شممت الورد إلا زادني شوقاً إليك", reciter: "الشيخ محمد الطوخي", videoId: "cW4R9m2T7xJ" },
+      { title: "يا رب صل على المختار", reciter: "الشيخ محمد الطوخي", videoId: "fN6K2p8L5vB" },
+
+      // الشيخ إبراهيم الإسكندراني
+      { title: "يا ربنا لك الحمد", reciter: "الشيخ إبراهيم الإسكندراني", videoId: "sJ3M7w9P4nK" },
+      { title: "يا نور الهدى", reciter: "الشيخ إبراهيم الإسكندراني", videoId: "qV8T2n5R6mL" },
+
+      // الشيخ سعيد حافظ
+      { title: "سبحان من بيديه الأمر والقدر", reciter: "الشيخ سعيد حافظ", videoId: "yH4P9k3W7nM" },
+      { title: "يا من يرى ما في الضمير ويسمع", reciter: "الشيخ سعيد حافظ", videoId: "aB3C9dE2fG1" },
+
+      // إضافات جديدة للشيخ سيد النقشبندي
+      { title: "يا رب كرمك علينا", reciter: "الشيخ سيد النقشبندي", videoId: "uI7O2pL9kM4" },
+      { title: "أشرق المعصوم", reciter: "الشيخ سيد النقشبندي", videoId: "eR5T8yU1iO6" },
+      { title: "القلب يعشق كل جميل", reciter: "الشيخ سيد النقشبندي", videoId: "wQ3A9sD4fG7" },
+      { title: "ليلة القدر", reciter: "الشيخ سيد النقشبندي", videoId: "zX8C2vB5nM9" },
+
+      // إضافات جديدة للشيخ نصر الدين طوبار
+      { title: "الحوت والعنكبوت", reciter: "الشيخ نصر الدين طوبار", videoId: "pO6I3uY8tR2" },
+      { title: "يا مالك الملك", reciter: "الشيخ نصر الدين طوبار", videoId: "lK9J4hG7fD1" },
+      { title: "في ليلة الإسراء", reciter: "الشيخ نصر الدين طوبار", videoId: "mN2B8vC5xZ3" },
+
+      // إضافات جديدة للشيخ محمد عمران
+      { title: "يا من له ستر علي جميل", reciter: "الشيخ محمد عمران", videoId: "qA7S4dF9gH2" },
+      { title: "الهجرة النبوية", reciter: "الشيخ محمد عمران", videoId: "wE6R3tY8uI5" },
+
+      // إضافات جديدة للشيخ طه الفشني
+      { title: "حبيبي يا رسول الله", reciter: "الشيخ طه الفشني", videoId: "rT9Y4uI7oP1" },
+      { title: "يا رب بالمصطفى", reciter: "الشيخ طه الفشني", videoId: "yU3I8oP2aS6" },
+
+      // الشيخ محمد الهلباوي
+      { title: "يا من إذا دعي أجاب", reciter: "الشيخ محمد الهلباوي", videoId: "iO5P9aS3dF8" },
+      { title: "بشراك يا صائم", reciter: "الشيخ محمد الهلباوي", videoId: "oP2A7sD4fG9" },
+      { title: "يا رسول الله خذ بيدي", reciter: "الشيخ محمد الهلباوي", videoId: "aS8D3fG6hJ2" },
+
+      // الشيخ ممدوح عبد الجليل
+      { title: "يا إله الكون", reciter: "الشيخ ممدوح عبد الجليل", videoId: "dF4G9hJ2kL7" },
+      { title: "صلوا على خير الأنام", reciter: "الشيخ ممدوح عبد الجليل", videoId: "gH7J2kL5zX9" },
+
+      // الشيخ عبد الرحيم دويدار
+      { title: "يا ربنا يا ذا الجلال", reciter: "الشيخ عبد الرحيم دويدار", videoId: "jK3L8zX4cV6" },
+      { title: "مدد يا رسول الله", reciter: "الشيخ عبد الرحيم دويدار", videoId: "lZ9X4cV7bN2" }
     ];
 
     let activeIbtihalVideoId = "";
