@@ -409,11 +409,15 @@
       </select>
       <button class="btn btn-play" id="radioPlayBtn" onclick="toggleRadioPlay()" style="width:100%; padding:14px; border-radius:12px; font-size:1.05rem;">▶️ تشغيل الإذاعة</button>
       <div id="radioStatusText" style="font-size:0.82rem; color:var(--text-muted); margin-top:8px; display:none;"></div>
+      
+      <!-- تنبيه و زر الفتح في متصفح خارجي يعمل تلقائياً داخل فيسبوك -->
       <div id="inAppBrowserNotice" style="display:none; margin-top:12px; padding:12px; border-radius:12px; background:var(--accent-soft); border:1px dashed var(--accent); font-size:0.84rem; line-height:1.7; color:var(--text);">
-        ⚠️ متصفح فيسبوك الداخلي قد يقيد البث المباشر أحياناً.<br>
+        ⚠️ متصفح فيسبوك الداخلي يمنع تشغيل البث المباشر أحياناً.<br>
         <button type="button" onclick="openInExternalBrowser()" class="btn btn-read" style="margin-top:8px; width:100%; padding:10px; border:1px solid var(--accent);">🌐 فتح في متصفح الهاتف (Chrome)</button>
       </div>
-      <audio id="liveRadioAudio" preload="none" playsinline crossorigin="anonymous"></audio>
+
+      <!-- عنصر الصوت المعدل بالكامل ليتوافق مع جميع القيود -->
+      <audio id="liveRadioAudio" preload="auto" playsinline crossorigin="anonymous"></audio>
     </div>
   </div>
 
@@ -1232,7 +1236,7 @@
       } catch (e) { resultsContainer.innerHTML = '<div>خطأ في الاتصال.</div>'; }
     }
 
-    // روابط البث المباشر (استخدمنا هنا الرابط المباشر الآمن بصيغة HTTPS والمدعوم في متصفحات الهواتف وفيسبوك)
+    // روابط البث المباشر (مع تفعيل سيرفرات HTTPS آمنة تماماً)
     const radioStationsMap = {
       cairo: [
         "https://stream.radiojar.com/8s5u5tpdtwzuv",
