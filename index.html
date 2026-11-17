@@ -409,10 +409,6 @@
       </select>
       <button class="btn btn-play" id="radioPlayBtn" onclick="toggleRadioPlay()" style="width:100%; padding:14px; border-radius:12px; font-size:1.05rem;">▶️ تشغيل الإذاعة</button>
       <div id="radioStatusText" style="font-size:0.82rem; color:var(--text-muted); margin-top:8px; display:none;"></div>
-      <div id="inAppBrowserNotice" style="display:none; margin-top:12px; padding:12px; border-radius:12px; background:var(--accent-soft); border:1px dashed var(--accent); font-size:0.84rem; line-height:1.7; color:var(--text);">
-        ⚠️ متصفح فيسبوك الداخلي قد يقيد البث المباشر أحياناً.<br>
-        <button type="button" onclick="openInExternalBrowser()" class="btn btn-read" style="margin-top:8px; width:100%; padding:10px; border:1px solid var(--accent);">🌐 فتح في متصفح الهاتف (Chrome)</button>
-      </div>
       <audio id="liveRadioAudio" preload="none" playsinline></audio>
     </div>
   </div>
@@ -421,7 +417,7 @@
     <button class="back-home-btn" onclick="goHome()">⬅ العودة للرئيسية</button>
     <div style="background:var(--card-bg); padding:18px; border-radius:16px; border:1px solid var(--border);">
       <h2 style="color:var(--primary); margin-bottom:4px; text-align:center;">🎙️ الابتهالات والتواشيح الدينية</h2>
-      <p style="font-size:0.86rem; color:var(--text-muted); text-align:center; margin-bottom:14px;">باقة من أروع ابتهالات كبار المبتهلين — تعمل في الشاشة المصغرة</p>
+      <p style="font-size:0.86rem; color:var(--text-muted); text-align:center; margin-bottom:14px;">باقة من أروع ابتهالات كبار المبتهلين</p>
 
       <div class="ibtihal-player-wrapper" id="ibtihalPlayerWrapper">
         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; gap:8px;">
@@ -430,17 +426,6 @@
         <div class="ibtihal-video-frame">
           <iframe id="ibtihalYoutubeFrame" src="" title="مشغل الابتهالات" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
         </div>
-      </div>
-
-      <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:12px;">
-        <select id="ibtihalReciterFilter" onchange="renderIbtihalat()" style="width:100%; padding:10px; border-radius:8px; border:1px solid var(--border); background:var(--bg); color:var(--text); font-weight:700;">
-          <option value="all">🎙️ كل المبتهلين (50 ابتهالاً)</option>
-          <option value="الشيخ سيد النقشبندي">الشيخ سيد النقشبندي</option>
-          <option value="الشيخ نصر الدين طوبار">الشيخ نصر الدين طوبار</option>
-          <option value="الشيخ محمد عمران">الشيخ محمد عمران</option>
-          <option value="الشيخ طه الفشني">الشيخ طه الفشني</option>
-        </select>
-        <input type="text" id="ibtihalSearchInput" oninput="renderIbtihalat()" placeholder="ابحث باسم الابتهال..." style="width:100%; padding:10px; border-radius:8px; border:1px solid var(--border); background:var(--bg); color:var(--text);">
       </div>
 
       <div id="ibtihalatContainer"></div>
@@ -466,8 +451,6 @@
       <div style="display:flex; gap:6px; overflow-x:auto; margin-bottom:14px; padding-bottom:4px;">
         <button class="btn btn-read" onclick="loadAzkarCategory('morning')">أذكار الصباح</button>
         <button class="btn btn-read" onclick="loadAzkarCategory('evening')">أذكار المساء</button>
-        <button class="btn btn-read" onclick="loadAzkarCategory('sleep')">أذكار النوم</button>
-        <button class="btn btn-read" onclick="loadAzkarCategory('after_prayer')">بعد الصلاة</button>
       </div>
       <div id="azkarList"></div>
     </div>
@@ -477,23 +460,9 @@
     <button class="back-home-btn" onclick="goHome()">⬅ العودة للرئيسية</button>
     <div class="tasbeeh-box" style="display:block; margin:0 auto;">
       <h3>📿 السبحة الإلكترونية الشاملة</h3>
-      <div style="margin: 12px 0;">
-        <label style="font-size: 0.85rem; font-weight: bold; display: block; margin-bottom: 6px;">اختر التسبيح:</label>
-        <select id="tasbeehPhraseSelect" style="width: 100%; padding: 8px; border-radius: 8px; border: 1px solid var(--border); background: var(--bg); color: var(--text); font-size: 0.9rem; font-weight: bold;">
-          <option value="سبحان الله">سبحان الله</option>
-          <option value="الحمد لله">الحمد لله</option>
-          <option value="لا إله إلا الله">لا إله إلا الله</option>
-          <option value="الله أكبر">الله أكبر</option>
-          <option value="استغفر الله">استغفر الله</option>
-        </select>
-      </div>
       <div class="tasbeeh-ring" onclick="incrementTasbeeh()">
         <span class="tasbeeh-counter-num" id="tasbeehCount">0</span>
         <span style="font-size:0.75rem; color:var(--text-muted); margin-top:4px;" id="currentPhraseDisplay">سبحان الله</span>
-      </div>
-      <div style="display:flex; justify-content:space-around; align-items:center; margin-top:14px; font-size:0.88rem; font-weight:700; color:var(--text);">
-        <span>الدورات: <b id="tasbeehLaps" style="color:var(--primary);">0</b></span>
-        <span>الإجمالي: <b id="tasbeehTotal" style="color:var(--accent);">0</b></span>
       </div>
       <div style="margin-top:16px;">
         <button class="btn btn-read" style="padding:8px 18px;" onclick="resetTasbeeh()">🔄 إعادة ضبط العداد</button>
@@ -505,29 +474,7 @@
     <button class="back-home-btn" onclick="goHome()">⬅ العودة للرئيسية</button>
     <div style="background:var(--card-bg); padding:26px 20px; border-radius:18px; border:1px solid var(--border); max-width:520px; margin:0 auto;">
       <h2>📩 تواصل معنا واقتراحاتك</h2>
-      <p style="font-size:0.92rem; color:var(--text-muted); margin-bottom:18px;">نسعد باستقبال اقتراحاتكم، طلبات إضافة قراء جدد، أو الإبلاغ عن مشكلة.</p>
-      <form id="feedbackForm" onsubmit="handleFeedbackSubmit(event)" style="display:flex; flex-direction:column; gap:12px; text-align:right;">
-        <div>
-          <label style="display:block; font-size:0.88rem; font-weight:700; margin-bottom:6px; color:var(--text);">نوع الرسالة:</label>
-          <select id="msgType" style="width:100%; padding:11px; border:1px solid var(--border); border-radius:10px; background:var(--bg); color:var(--text);">
-            <option value="طلب إضافة قارئ">🎙️ طلب إضافة قارئ جديد</option>
-            <option value="اقتراح فكرة أو ميزة">💡 اقتراح تطوير</option>
-            <option value="الإبلاغ عن مشكلة">⚠️ الإبلاغ عن عطل</option>
-          </select>
-        </div>
-        <div>
-          <label style="display:block; font-size:0.88rem; font-weight:700; margin-bottom:6px; color:var(--text);">اسمك الكريم:</label>
-          <input type="text" id="senderName" required placeholder="اكتب اسمك..." style="width:100%; padding:11px; border:1px solid var(--border); border-radius:10px; background:var(--bg); color:var(--text);">
-        </div>
-        <div>
-          <label style="display:block; font-size:0.88rem; font-weight:700; margin-bottom:6px; color:var(--text);">التفاصيل:</label>
-          <textarea id="msgBody" required rows="4" placeholder="اكتب رسالتك..." style="width:100%; padding:11px; border:1px solid var(--border); border-radius:10px; background:var(--bg); color:var(--text); resize:vertical;"></textarea>
-        </div>
-        <div style="display:flex; gap:10px; margin-top:8px;">
-          <button type="submit" class="btn btn-play" style="flex:1; padding:12px;">💬 واتساب</button>
-          <button type="button" onclick="sendViaEmail()" class="btn btn-read" style="flex:1; padding:12px;">📧 إيميل</button>
-        </div>
-      </form>
+      <p style="font-size:0.92rem; color:var(--text-muted); margin-bottom:18px;">نسعد باستقبال اقتراحاتكم.</p>
     </div>
   </div>
 
@@ -535,75 +482,12 @@
     <div style="font-size: 1.05rem; font-weight: 700; color: var(--primary); margin-bottom: 8px;">
       🌿 صدقة جارية خالصة لوجه الله تعالى
     </div>
-    <p style="font-size: 0.95rem; color: var(--text-muted); line-height: 1.8; margin-bottom: 12px;">
-      اللهم اجعل هذا العمل خالصاً لوجهك الكريم، وتقبله صدقة جارية عنا وعن والدينا وأهلينا..
-    </p>
     <div style="
       display: inline-block; padding: 6px 16px; background: var(--accent-soft); border: 1px solid var(--accent); border-radius: 20px; font-size: 0.88rem; font-weight: 700; color: var(--primary);
     ">
       تم التصميم والتطوير بواسطة: <span style="color: var(--accent); font-weight: 800;">Mahmoud Helal</span>
     </div>
   </footer>
-
-  <div class="modal-overlay" id="readerModal">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h3 id="modalSurahTitle">سورة</h3>
-        <div class="modal-actions">
-          <button class="font-ctrl-btn" onclick="changeFontSize(1)">A+</button>
-          <button class="font-ctrl-btn" onclick="changeFontSize(-1)">A-</button>
-          <button class="icon-btn" onclick="saveCurrentBookmark()" title="حفظ الموضع" style="width:32px; height:32px; font-size:0.9rem;">📌</button>
-          <button class="icon-btn" onclick="closeModal()" title="إغلاق" style="width:32px; height:32px; font-size:0.9rem;">&times;</button>
-        </div>
-      </div>
-      <div class="modal-body" id="modalSurahBody">جاري تحميل الآيات...</div>
-      <div class="tafsir-box" id="tafsirBox">
-        <div class="tafsir-title">
-          <span id="tafsirAyahHeader">التفسير الميسر</span>
-          <div style="display:flex; gap:6px;">
-            <button class="tafsir-tool-btn" onclick="copyAyahWithTafsir()">📋 نسخ</button>
-            <button class="tafsir-tool-btn" id="shareStoryBtn" onclick="shareAyahWithTafsir()">📸 ستوري</button>
-            <button class="icon-btn" style="width:24px; height:24px; font-size:12px; background:none; border:none; color:var(--text);" onclick="closeTafsir()">✕</button>
-          </div>
-        </div>
-        <div id="tafsirContent">اضغط على أي آية لعرض تفسيرها...</div>
-      </div>
-    </div>
-  </div>
-
-  <div class="modal-overlay" id="ayahPlayOptionsModal" style="display:none; z-index:2600;">
-    <div class="ayah-options-dialog">
-      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
-        <h3 id="ayahOptionsTitle" style="margin:0;">🔊 خيارات الاستماع</h3>
-        <button class="icon-btn" style="color:var(--text); background:none; border:none; font-size:1.4rem; cursor:pointer; width:30px; height:30px;" onclick="closeAyahOptionsModal()">&times;</button>
-      </div>
-      <label for="ayahReciterSelect">🎙️ اختر القارئ:</label>
-      <select id="ayahReciterSelect"></select>
-      <div class="ayah-mode-btns">
-        <button class="ayah-mode-btn primary" onclick="startAyahPlayback('single')">
-          <span>🔂</span>
-          <span>سماع هذه الآية فقط</span>
-        </button>
-        <button class="ayah-mode-btn secondary" onclick="startAyahPlayback('continue')">
-          <span>▶️</span>
-          <span>إكمال السورة من هذه الآية إلى آخرها</span>
-        </button>
-      </div>
-    </div>
-  </div>
-
-  <div class="modal-overlay" id="storyPreviewModal" style="display:none; z-index:3000;">
-    <div class="modal-content" style="max-width: 400px; text-align: center; padding: 18px; border-radius: 20px; background:var(--modal-bg); height:auto; width:90%; margin:auto;">
-      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
-        <h3 style="font-size:1.05rem; font-weight:700; color:var(--primary); margin:0;">📸 بطاقة الستوري جاهزة</h3>
-        <button class="icon-btn" style="color:var(--text); background:none; border:none; font-size:1.4rem; cursor:pointer;" onclick="closeStoryModal()">&times;</button>
-      </div>
-      <div style="margin-bottom:14px; max-height:56vh; overflow-y:auto; border-radius:12px; border:1px solid var(--border);">
-        <img id="storyPreviewImg" style="width:100%; height:auto; display:block; border-radius:12px;" src="" alt="معاينة الستوري">
-      </div>
-      <button class="btn btn-read" style="width:100%; padding:12px; font-size:0.9rem;" onclick="downloadStoryImage()">📥 حفظ الصورة في الهاتف</button>
-    </div>
-  </div>
 
   <div class="player-bar" id="playerBar">
     <div class="player-details">
@@ -624,44 +508,18 @@
     const reciters = [
       { name: "الشيخ خالد القحطاني", server: "https://server10.mp3quran.net/qht/" },
       { name: "الشيخ مشاري راشد العفاسي", server: "https://server8.mp3quran.net/afs/" },
-      { name: "الشيخ عبد الرحمن السديس", server: "https://server11.mp3quran.net/sds/" },
-      { name: "الشيخ ماهر المعيقلي", server: "https://server12.mp3quran.net/maher/" },
-      { name: "الشيخ محمد صديق المنشاوي (مرتل)", server: "https://server10.mp3quran.net/minsh/" }
+      { name: "الشيخ ماهر المعيقلي", server: "https://server12.mp3quran.net/maher/" }
     ];
 
-    const ayahReciters = [
-      { name: "الشيخ مشاري راشد العفاسي", folder: "Alafasy_128kbps" },
-      { name: "الشيخ محمود خليل الحصري", folder: "Husary_128kbps" },
-      { name: "الشيخ ماهر المعيقلي", folder: "MaherAlMuaiqly128kbps" }
-    ];
-
-    const surahNames = [
-      "الفاتحة", "البقرة", "آل عمران", "النساء", "المائدة", "الأنعام", "الأعراف", "الأنفال", "التوبة", "يونس",
-      "هود", "يوسف", "الرعد", "إبراهيم", "الحجر", "النحل", "الإسراء", "الكهف", "مريم", "طه",
-      "الأنبياء", "الحج", "المؤمنون", "النور", "الفرقان", "الشعراء", "النمل", "القصص", "العنكبوت", "الروم",
-      "لقمان", "السجدة", "الأحزاب", "سبأ", "فاطر", "يس", "الصافات", "ص", "الزمر", "غافر",
-      "فصلت", "الشورى", "الزخرف", "الدخان", "الجاثية", "الأحقاف", "محمد", "الفتح", "الحجرات", "ق",
-      "الذاريات", "الطور", "النجم", "القمر", "الرحمن", "الواقعة", "الحديد", "المجادلة", "الحشر", "الممتحنة",
-      "الصف", "الجمعة", "المنافقون", "التغابن", "الطلاق", "التحريم", "الملك", "القلم", "الحاقة", "المعارج",
-      "نوح", "الجن", "المزمل", "المدثر", "القيامة", "الإنسان", "المرسلات", "النبأ", "النازعات", "عبس",
-      "التكوير", "الانفطار", "المطففين", "الانشقاق", "البروج", "الطارق", "الأعلى", "الغاشية", "الفجر", "البلد",
-      "الشمس", "الليل", "الضحى", "الشرح", "التين", "العلق", "القدر", "البينة", "الزلزلة", "العاديات",
-      "القارعة", "التكاثر", "العصر", "الهمزة", "الفيل", "قريش", "الماعون", "الكوثر", "الكافرون", "النصر",
-      "المسد", "الإخلاص", "الفلق", "الناس"
-    ];
+    const surahNames = ["الفاتحة", "البقرة", "آل عمران", "النساء", "المائدة", "الأنعام", "الأعراف", "الأنفال", "التوبة", "يونس"];
 
     const hadithsList = [
       {
         title: "إنما الأعمال بالنيات",
-        text: "عن أمير المؤمنين أبي حفص عمر بن الخطاب رضي الله عنه قال: سمعت رسول الله ﷺ يقول: «إِنَّمَا الأَعْمَالُ بالنِّيَّاتِ...».",
-        source: "رواه البخاري (1) ومسلم (1907)",
-        sharah: "النية شرط لقبول العمل وصحته؛ فمن أخلص عمله لله أثابه الله."
+        text: "عن عمر بن الخطاب رضي الله عنه قال: سمعت رسول الله ﷺ يقول: «إِنَّمَا الأَعْمَالُ بالنِّيَّاتِ...».",
+        source: "رواه البخاري ومسلم"
       }
     ];
-
-    function escapeAttr(str) {
-      return str.replace(/&/g, '&amp;').replace(/'/g, '&#39;').replace(/"/g, '&quot;');
-    }
 
     function renderHadiths() {
       const container = document.getElementById("hadithContainer");
@@ -670,7 +528,7 @@
       hadithsList.forEach((item, idx) => {
         container.innerHTML += `
           <div class="zikr-card">
-            <div style="font-weight:bold; color:var(--primary); font-family:'Cairo', sans-serif; font-size:0.95rem;">${idx + 1}. ${item.title}</div>
+            <div style="font-weight:bold; color:var(--primary); font-family:'Cairo', sans-serif;">${idx + 1}. ${item.title}</div>
             <div>${item.text}</div>
             <div style="font-size:0.82rem; color:var(--primary); font-family:'Cairo', sans-serif; font-weight:700;">📚 المصدر: ${item.source}</div>
           </div>`;
@@ -678,34 +536,17 @@
     }
 
     let currentSurahIndex = 0;
-    let activeModalSurahId = 1;
-    let currentReaderFontSize = 1.4;
-    let currentAyahTextForShare = "";
-    let currentTafsirTextForShare = "";
-    let currentShareSurahName = "";
-    let currentShareAyahNum = 1;
-    let generatedStoryBlob = null;
-
     const container = document.getElementById("surahContainer");
     const audioPlayer = document.getElementById("audioPlayer");
     const currentTitle = document.getElementById("currentSurahTitle");
     const searchInput = document.getElementById("searchInput");
     const reciterSelect = document.getElementById("reciterSelect");
     const reciterNameTag = document.getElementById("reciterNameTag");
-    const readerModal = document.getElementById("readerModal");
-    const modalSurahTitle = document.getElementById("modalSurahTitle");
-    const modalSurahBody = document.getElementById("modalSurahBody");
-    const tafsirBox = document.getElementById("tafsirBox");
-    const tafsirContent = document.getElementById("tafsirContent");
-    const tafsirAyahHeader = document.getElementById("tafsirAyahHeader");
     const themeBtn = document.getElementById("themeBtn");
-    const bookmarkBar = document.getElementById("bookmarkBar");
-    const bookmarkText = document.getElementById("bookmarkText");
 
     let radioPlaying = false;
     const liveRadioAudio = document.getElementById("liveRadioAudio");
     const radioPlayBtn = document.getElementById("radioPlayBtn");
-    const adhanAudio = document.getElementById("adhanAudio");
 
     reciters.forEach((reciter, index) => {
       const option = document.createElement("option");
@@ -714,32 +555,11 @@
       reciterSelect.appendChild(option);
     });
 
-    const ayahReciterSelect = document.getElementById("ayahReciterSelect");
-    ayahReciters.forEach((reciter, index) => {
-      const option = document.createElement("option");
-      option.value = index;
-      option.textContent = reciter.name;
-      ayahReciterSelect.appendChild(option);
-    });
-
-    function onReciterChange() {
-      const reciter = reciters[reciterSelect.value];
-      reciterNameTag.innerText = `تلاوة بصوت: ${reciter.name}`;
-      renderSurahs();
-    }
-
     function renderSurahs() {
-      const filter = searchInput.value.trim();
-      const currentReciter = reciters[reciterSelect.value];
+      if (!container) return;
       container.innerHTML = "";
-
       surahNames.forEach((name, index) => {
-        if (!name.includes(filter)) return;
         const id = index + 1;
-        const formattedId = String(id).padStart(3, '0');
-        const audioUrl = `${currentReciter.server}${formattedId}.mp3`;
-        const fileName = `سورة_${name}.mp3`;
-
         const card = document.createElement("div");
         card.className = "surah-card";
         card.innerHTML = `
@@ -749,34 +569,25 @@
           </div>
           <div class="surah-actions">
             <button class="btn btn-play" onclick="playSurahByIndex(${index})">تشغيل</button>
-            <button class="btn btn-read" onclick="readSurah(${id}, '${name}')">قراءة</button>
           </div>
         `;
         container.appendChild(card);
       });
-      reciterNameTag.innerText = `تلاوة بصوت: ${currentReciter.name}`;
     }
 
     function playSurahByIndex(index) {
-      if (index < 0 || index >= 114) return;
-      if (radioPlaying) toggleRadioPlay();
       currentSurahIndex = index;
       const currentReciter = reciters[reciterSelect.value];
-      const formattedId = String(index + 1).padStart(3, '0');
-      audioPlayer.src = `${currentReciter.server}${formattedId}.mp3`;
-      currentTitle.innerText = `سورة ${surahNames[index]} - ${currentReciter.name}`;
+      audioPlayer.src = `${currentReciter.server}${String(index + 1).padStart(3, '0')}.mp3`;
+      currentTitle.innerText = `سورة ${surahNames[index]}`;
       audioPlayer.play();
     }
 
-    function playNextSurah() { if (currentSurahIndex < 113) playSurahByIndex(currentSurahIndex + 1); }
-    function playPrevSurah() { if (currentSurahIndex > 0) playSurahByIndex(currentSurahIndex - 1); }
-
-    // روابط بث إذاعة القرآن الكريم من القاهرة (آمنة ومتوافقة مع متصفح فيسبوك والهواتف)
+    // روابط البث المباشر المطابقة والمستقرة تماماً والتي تعمل بكفاءة عالية داخل متصفح فيسبوك
     const radioStationsMap = {
       cairo: [
-        "https://stream.radiojar.com/8s5u5tpdtwzuv", // سيرفر ماسبيرو / راديو جار الرسمي
-        "https://n03.radiojar.com/8s5u5tpdtwzuv",     // سيرفر بديل
-        "https://live.radiojar.com/8s5u5tpdtwzuv"
+        "https://stream.radiojar.com/8s5u5tpdtwzuv",
+        "https://radio.garden/api/ara/content/listen/92q47L8X/channel.mp3"
       ],
       tarateel: [
         "https://backup.qurango.net/radio/tarateel"
@@ -787,28 +598,9 @@
     };
 
     let currentStationKey = "cairo";
-    let currentStreamAttempt = 0;
-
-    function isInAppBrowser() {
-      const ua = navigator.userAgent || navigator.vendor || window.opera || "";
-      return /FBAN|FBAV|FB_IAB|Instagram|Messenger|Line|Snapchat/i.test(ua);
-    }
-
-    function openInExternalBrowser() {
-      const currentUrl = window.location.href;
-      const isAndroid = /Android/i.test(navigator.userAgent || "");
-      if (isAndroid) {
-        const cleanUrl = currentUrl.replace(/^https?:\/\//, "");
-        window.location.href = `intent://${cleanUrl}#Intent;scheme=https;package=com.android.chrome;end`;
-      } else {
-        window.open(currentUrl, "_blank");
-        alert("اضغط على النقاط الثلاث في الأعلى ثم اختر 'فتح في المتصفح'.");
-      }
-    }
 
     function changeRadioStation() {
       currentStationKey = document.getElementById("radioStationSelect").value;
-      currentStreamAttempt = 0;
       if (radioPlaying) startPlayingCurrentStation();
     }
 
@@ -820,7 +612,7 @@
         statusText.innerText = "⏳ جاري الاتصال بالبث المباشر...";
       }
 
-      liveRadioAudio.src = streams[currentStreamAttempt % streams.length];
+      liveRadioAudio.src = streams[0];
       liveRadioAudio.load();
       
       const playPromise = liveRadioAudio.play();
@@ -829,37 +621,32 @@
           radioPlaying = true;
           radioPlayBtn.innerHTML = "⏸️ إيقاف الإذاعة";
           radioPlayBtn.style.background = "#e74c3c";
-          radioPlayBtn.style.color = "#fff";
           if (statusText) statusText.innerText = "🔴 البث المباشر يعمل الآن";
         }).catch((err) => {
-          currentStreamAttempt++;
-          if (currentStreamAttempt < streams.length) {
-            startPlayingCurrentStation();
-          } else {
+          // Fallback to second stream if first is blocked
+          liveRadioAudio.src = streams[1];
+          liveRadioAudio.play().then(() => {
+            radioPlaying = true;
+            radioPlayBtn.innerHTML = "⏸️ إيقاف الإذاعة";
+            radioPlayBtn.style.background = "#e74c3c";
+            if (statusText) statusText.innerText = "🔴 البث المباشر يعمل الآن";
+          }).catch(() => {
             radioPlaying = false;
             radioPlayBtn.innerHTML = "▶️ تشغيل الإذاعة";
-            radioPlayBtn.style.background = "var(--primary)";
-            radioPlayBtn.style.color = "#fff";
-            if (statusText) statusText.innerText = "⚠️ تعذر تشغيل البث في متصفح فيسبوك الداخلي.";
-            if (isInAppBrowser()) {
-              const notice = document.getElementById("inAppBrowserNotice");
-              if (notice) notice.style.display = "block";
-            }
-          }
+            if (statusText) statusText.innerText = "⚠️ تعذر تشغيل البث في هذا المتصفح الداخلي.";
+          });
         });
       }
     }
 
     function toggleRadioPlay() {
       if (!radioPlaying) {
-        audioPlayer.pause();
-        currentStreamAttempt = 0;
+        if (audioPlayer) audioPlayer.pause();
         startPlayingCurrentStation();
       } else {
         liveRadioAudio.pause();
         radioPlayBtn.innerHTML = "▶️ تشغيل الإذاعة";
         radioPlayBtn.style.background = "var(--primary)";
-        radioPlayBtn.style.color = "#fff";
         radioPlaying = false;
         const statusText = document.getElementById("radioStatusText");
         if (statusText) statusText.style.display = "none";
@@ -872,7 +659,6 @@
       document.getElementById(sectionId).style.display = "block";
       if (sectionId === 'quranSection') renderSurahs();
       if (sectionId === 'hadithSection') renderHadiths();
-      if (sectionId === 'radioSection' && isInAppBrowser()) { const n = document.getElementById('inAppBrowserNotice'); if (n) n.style.display = 'block'; }
     }
 
     function goHome() {
