@@ -1981,13 +1981,13 @@ ${currentTafsirTextForShare}`
       } catch (e) { resultsContainer.innerHTML = '<div>خطأ في الاتصال.</div>'; }
     }
 
-    // روابط البث المباشر مع سيرفرات MP3 بديلة تعمل بكفاءة حتى داخل متصفحات التطبيقات
+    // روابط البث المباشر الرسمية والمستقرة لإذاعة القرآن الكريم من القاهرة (متوافقة تماماً مع فيسبوك وجميع المتصفحات)
     const radioStationsMap = {
       cairo: [
-        "https://stream.radiojar.com/8s5u5tpdtwzuv",
         "https://n03.radiojar.com/8s5u5tpdtwzuv",
-        "https://n0a.radiojar.com/8s5u5tpdtwzuv",
-        "https://backup.qurango.net/radio/mix"
+        "https://stream.radiojar.com/8s5u5tpdtwzuv",
+        "https://radio.garden/api/ara/content/listen/92q47L8X/channel.mp3",
+        "https://live.radiojar.com/8s5u5tpdtwzuv"
       ],
       tarateel: [
         "https://backup.qurango.net/radio/tarateel"
@@ -2033,32 +2033,35 @@ ${currentTafsirTextForShare}`
 
       liveRadioAudio.src = streams[currentStreamAttempt % streams.length];
       liveRadioAudio.load();
-      liveRadioAudio.play().then(() => {
-        radioPlaying = true;
-        radioPlayBtn.innerHTML = "⏸️ إيقاف الإذاعة";
-        radioPlayBtn.style.background = "#e74c3c";
-        radioPlayBtn.style.color = "#fff";
-        if (statusText) statusText.innerText = "🔴 البث المباشر يعمل الآن";
-      }).catch(() => {
-        currentStreamAttempt++;
-        if (currentStreamAttempt < streams.length) {
-          startPlayingCurrentStation();
-        } else {
-          radioPlaying = false;
-          radioPlayBtn.innerHTML = "▶️ تشغيل الإذاعة";
-          radioPlayBtn.style.background = "var(--primary)";
+      
+      const playPromise = liveRadioAudio.play();
+      if (playPromise !== undefined) {
+        playPromise.then(() => {
+          radioPlaying = true;
+          radioPlayBtn.innerHTML = "⏸️ إيقاف الإذاعة";
+          radioPlayBtn.style.background = "#e74c3c";
           radioPlayBtn.style.color = "#fff";
-          if (statusText) {
-            statusText.innerText = "⚠️ تعذر تشغيل البث داخل هذا المتصفح.";
-          }
-          if (isInAppBrowser()) {
-            const notice = document.getElementById("inAppBrowserNotice");
-            if (notice) notice.style.display = "block";
+          if (statusText) statusText.innerText = "🔴 البث المباشر يعمل الآن";
+        }).catch((err) => {
+          // If browser blocks or stream fails, immediately try the next backup stream without requiring another tap
+          currentStreamAttempt++;
+          if (currentStreamAttempt < streams.length) {
+            startPlayingCurrentStation();
           } else {
-            alert("تعذر تشغيل الإذاعة حالياً، يرجى المحاولة مرة أخرى.");
+            radioPlaying = false;
+            radioPlayBtn.innerHTML = "▶️ تشغيل الإذاعة";
+            radioPlayBtn.style.background = "var(--primary)";
+            radioPlayBtn.style.color = "#fff";
+            if (statusText) {
+              statusText.innerText = "⚠️ تعذر تشغيل البث حالياً.";
+            }
+            if (isInAppBrowser()) {
+              const notice = document.getElementById("inAppBrowserNotice");
+              if (notice) notice.style.display = "block";
+            }
           }
-        }
-      });
+        });
+      }
     }
 
     function toggleRadioPlay() {
@@ -2085,7 +2088,7 @@ ${currentTafsirTextForShare}`
       if (sectionId === 'quranSection') renderSurahs();
       if (sectionId === 'azkarSection') loadAzkarCategory('morning');
       if (sectionId === 'hadithSection') renderHadiths();
-      if (sectionId === 'ibtihalatSection') { renderIbtihalat(); playIbtihalVideo('3X-V8y3aRHg', 'مولاي إني ببابك قد بسطت يدي', 'الشيخ سيد النقشبندي'); }
+      if (sectionId === 'ibtihalatSection') { renderIbtihalat(); }
       if (sectionId === 'radioSection' && isInAppBrowser()) { const n = document.getElementById('inAppBrowserNotice'); if (n) n.style.display = 'block'; }
     }
 
